@@ -6,7 +6,7 @@ from _thread import *
 
 ServerSocket = socket.socket()
 host = '127.0.0.1'
-port = 1233
+port = 1230
 ThreadCount = 0
 try:
     ServerSocket.bind((host, port))
