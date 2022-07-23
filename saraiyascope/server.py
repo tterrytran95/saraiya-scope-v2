@@ -6,10 +6,10 @@ from _thread import *
 
 ServerSocket = socket.socket()
 host = '127.0.0.1'
-port = 1200
+port = 1234
 ThreadCount = 0
 try:
-    ServerSocket.bind((host, port))
+    ServerSocket.bind(('', port))
 except socket.error as e:
     print(str(e))
 

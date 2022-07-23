@@ -6,7 +6,7 @@ import socket
 ClientSocket = socket.socket()
 # host = '98.37.193.32' # ip address of displaying computer
 host = 'Tuethus-MacBook-Pro.local' # ip address of displaying computer
-port = 1200
+port = 1234
 
 print('Waiting for connection')
 try:
