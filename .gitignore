@@ -1,0 +1,5 @@
+frames/
+media/
+samples/
+*./__pycache__/.*
+db.sqlite3

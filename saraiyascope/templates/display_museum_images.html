@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta http-equiv="refresh" content="1"> -->
+	<title>MuseumImages</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	</script>
+</head>
+<body>
+
+    <!-- <img src="{{ img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> -->
+	{% for i in img %}
+			<div class="col-md-4">
+					<!-- {{ hotel.name }} -->
+					<script>
+						function getNextImage() {
+							// uses current image name to get next 
+							console.log("{{i.img.url }}")
+							let path = "{{i.img.url }}"
+							let dirs = path.split(".")[0].split("/") // directories 
+							let index = dirs[dirs.length-1].match(/\d+/g)
+							console.log(parseInt(index))
+							let next_img = "{{ i.img.url }}".replace(index, (parseInt(index)+1).toString())
+							console.log(next_img) 
+							return next_img
+						}
+					</script>
+						<img src="{{ i.img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+
+					<button type="button" onclick="getNextImage()">Try it</button>
+
+
+			</div>
+	{% endfor %}
+
+</body>
+</html>
+
