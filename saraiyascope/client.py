@@ -1,9 +1,11 @@
 # https://codezup.com/socket-server-with-multiple-clients-model-multithreading-python/
+# runs on the raspberry pi
 
 import socket
 
 ClientSocket = socket.socket()
-host = '98.37.193.32'
+# host = '98.37.193.32' # ip address of displaying computer
+host = 'Tuethus-MacBook-Pro.local' # ip address of displaying computer
 port = 1200
 
 print('Waiting for connection')
