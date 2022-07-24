@@ -6,7 +6,7 @@ import adafruit_tca9548a
 import sys
 import adafruit_vcnl4040
 import socket
-
+import json
 HOST = '10.0.0.211' # ip address of displaying computer
 PORT = 1234
 TOTAL_FRAMES = 1000 # temp for now
