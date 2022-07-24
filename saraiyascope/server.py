@@ -29,7 +29,7 @@ def threaded_client(connection):
     while True:
         data = connection.recv(2048)
         raw_data = data.decode('utf-8')
-        print('received: ', raw_daeta)
+        print('received: ', raw_data)
         
         try:
             myfile = open('state', 'a')
