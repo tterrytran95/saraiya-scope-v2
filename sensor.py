@@ -5,24 +5,14 @@ import qwiic_proximity
 import adafruit_tca9548a
 import sys
 import adafruit_vcnl4040
-
 import socket
 
-ClientSocket = socket.socket()
-host = '10.0.0.211' # ip address of displaying computer
-# host = 'Tuethus-MacBook-Pro.local' # ip address of displaing computer
-port = 1234
+HOST = '10.0.0.211' # ip address of displaying computer
+PORT = 1234
+TOTAL_FRAMES = 1000 # temp for now
 
-print('Waiting for connection')
-try:
-    ClientSocket.connect((host, port))
-except socket.error as e:
-    print(str(e))
-    exit(1)
 
-Response = ClientSocket.recv(1024)
-
-    
+## determines the state of the sensors
 def get_state(current, previous):
     if current == previous:
         return 'stable'
@@ -33,11 +23,21 @@ def get_state(current, previous):
     if current < previous:
         return 'backward'
 
+
+## make socket connection to server
+ClientSocket = socket.socket()
+print('Waiting for connection')
+try:
+    ClientSocket.connect((HOST, PORT))
+except socket.error as e:
+    print(str(e))
+    exit(1)
+Response = ClientSocket.recv(1024)
+
 # Create I2C bus as normal
 i2c = board.I2C()
 
 # Create the TCA9548A object and give it the I2C bus
-#tca = qwiic_tca9548a.QwiicTCA9548A()
 tca = adafruit_tca9548a.TCA9548A(i2c)
 
 prox1 = adafruit_vcnl4040.VCNL4040(tca[0])
@@ -47,7 +47,7 @@ prox4 = adafruit_vcnl4040.VCNL4040(tca[3])
 
 current = 'prox1'
 previous = None
-
+img_count = 0 # send this to host so they know which image to render
 while True:
     previous = current 
     max_value = -1
@@ -72,15 +72,27 @@ while True:
         current = 'prox4'
         max_value = p4
     
-    print(get_state(current, previous))
+    # networking stuff 
+    if (cur_state == 'stable' and cur_state == get_state(current, previous)):
+        cur_state = get_state(current,previous)
+        pass # don't send it bc it's it's stable
+    else: # update the input 
+        cur_state = get_state(current,previous)
+        # Input = get_state(current, previous)
+        
+        if cur_state == 'forward': 
+            img_count = (img_count + 1) % TOTAL_FRAMES
+        elif cur_state == 'backward': 
+            img_count -= 1
+            if img_count < 0: img_count == 0
+        
+        data = {'state': cur_state, 'image': 'frame'+str(img_count)+'.jpg'}
+        json_data = json.loads(data)
+        # ClientSocket.send(str.encode(current_state))
+        ClientSocket.send(json_data)
+        Response = ClientSocket.recv(1024)
+        # print(Response.decode('utf-8'))
     
-    # Input = input('Say Something: ')
-    Input = get_state(current, previous)
-    # ClientSocket.sendall(str.encode(Input))
-    ClientSocket.send(str.encode(Input))
-    Response = ClientSocket.recv(1024)
-    print(Response.decode('utf-8'))
-
           
     time.sleep(.25)
 ClientSocket.close()

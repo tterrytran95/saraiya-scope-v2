@@ -2,6 +2,9 @@
 
 # how to run 
 
+### System requirements
+- Iot device (raspberry pi) must be connected to the same Wifi network as the displaying laptop. 
+
 ### Set up the raspberry pi
 1. Ssh into the raspberry pi. [Instructions](https://libguides.nyit.edu/c.php?g=469894&p=3365470)
     - ```ssh saraiya-scope@[IP_ADDRESS]```
