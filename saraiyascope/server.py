@@ -1,4 +1,6 @@
 # https://codezup.com/socket-server-with-multiple-clients-model-multithreading-python/
+# runs on webhosting machine
+# this server will accept image and pass on to browser
 
 import socket
 import os
@@ -22,10 +24,12 @@ def threaded_client(connection):
     while True:
         data = connection.recv(2048)
         reply = 'Server Says: ' + data.decode('utf-8')
+        print('received: ', data.decode('utf-8'))
         if not data:
             break
         connection.sendall(str.encode(reply))
     connection.close()
+
 
 while True:
     Client, address = ServerSocket.accept()
