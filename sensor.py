@@ -87,8 +87,8 @@ while True:
             img_count -= 1
             if img_count < 0: img_count == 0
         
-        data = {'state': cur_state, 'image': 'frame'+str(img_count)+'.jpg'}
-        json_data = json.dump(str(data))
+        # data = {'state': cur_state, 'image': 'frame'+str(img_count)+'.jpg'}
+        # json_data = json.dump(str(data))
         # ClientSocket.send(str.encode(current_state))
         ClientSocket.send(cur_state + ',' + 'frame'+str(img_count)+'.jpg')
         Response = ClientSocket.recv(1024)
