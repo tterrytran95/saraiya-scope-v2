@@ -48,6 +48,7 @@ prox4 = adafruit_vcnl4040.VCNL4040(tca[3])
 current = 'prox1'
 previous = None
 img_count = 0 # send this to host so they know which image to render
+cur_state = None
 while True:
     previous = current 
     max_value = -1
