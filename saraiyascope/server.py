@@ -26,6 +26,7 @@ ServerSocket.listen(5)
 
 def threaded_client(connection):
     connection.send(str.encode('Welcome to the Servern'))
+    max_lines = 10
     while True:
         data = connection.recv(2048)
         raw_data = data.decode('utf-8')
@@ -33,12 +34,13 @@ def threaded_client(connection):
         
         try:
             myfile = open('state', 'a')
-            myfile.writelines(raw_data)[LINE_COUNT]
-            LINE_COUNT = (LINE_COUNT + 1) % MAX_LINES
+            myfile.writelines(raw_data)[line_count]
         except IOError:
-                myfile.close()
+            myfile.close()
         finally:
-                myfile.close()
+            myfile.close()
+            line_count = (line_count + 1) % max_lines
+                
         
         if not data:
             break
