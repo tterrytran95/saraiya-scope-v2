@@ -1,5 +1,6 @@
 # https://codezup.com/socket-server-with-multiple-clients-model-multithreading-python/
 # runs on the raspberry pi
+# deprecated --> see sensors.py in top directory
 
 import socket
 
