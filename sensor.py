@@ -6,6 +6,22 @@ import adafruit_tca9548a
 import sys
 import adafruit_vcnl4040
 
+import socket
+
+ClientSocket = socket.socket()
+host = '10.0.0.211' # ip address of displaying computer
+# host = 'Tuethus-MacBook-Pro.local' # ip address of displaing computer
+port = 1234
+
+print('Waiting for connection')
+try:
+    ClientSocket.connect((host, port))
+except socket.error as e:
+    print(str(e))
+    exit(1)
+
+Response = ClientSocket.recv(1024)
+
     
 def get_state(current, previous):
     if current == previous:
@@ -57,5 +73,14 @@ while True:
         max_value = p4
     
     print(get_state(current, previous))
+    
+    # Input = input('Say Something: ')
+    Input = get_state(current, previous)
+    # ClientSocket.sendall(str.encode(Input))
+    ClientSocket.send(str.encode(Input))
+    Response = ClientSocket.recv(1024)
+    print(Response.decode('utf-8'))
+
           
     time.sleep(.25)
+ClientSocket.close()
