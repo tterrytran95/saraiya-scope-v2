@@ -7,6 +7,7 @@ import os
 from _thread import *
 import json
 import io
+import fileinput
 
 LINE_COUNT = 0
 MAX_LINES = 10
@@ -27,19 +28,23 @@ ServerSocket.listen(5)
 def threaded_client(connection):
     connection.send(str.encode('Welcome to the Servern'))
     max_lines = 10
+    line_count = 0
     while True:
         data = connection.recv(2048)
         raw_data = data.decode('utf-8')
         print('received: ', raw_data)
         
-        try:
-            myfile = open('state', 'a')
-            myfile.writelines(raw_data)[line_count]
-        except IOError:
-            myfile.close()
-        finally:
-            myfile.close()
-            line_count = (line_count + 1) % max_lines
+        # try:
+        #     myfile = open('state', 'w+')
+        #     print(raw_data)
+        #     print(line_count)
+            
+        #     myfile.writelines(raw_data)[line_count]
+        # except IOError:
+        #     myfile.close()
+        # finally:
+        #     myfile.close()
+        #     line_count = (line_count + 1) % max_lines
                 
         
         if not data:
