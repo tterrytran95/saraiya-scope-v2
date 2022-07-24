@@ -6,6 +6,10 @@ import socket
 import os
 from _thread import *
 import json
+import io
+
+LINE_COUNT = 0
+MAX_LINES = 10
 
 ServerSocket = socket.socket()
 host = '127.0.0.1'
@@ -24,11 +28,21 @@ def threaded_client(connection):
     connection.send(str.encode('Welcome to the Servern'))
     while True:
         data = connection.recv(2048)
-        reply = 'Server Says: ' + data.decode('utf-8')
-        print('received: ', data.decode('utf-8'))
+        raw_data = data.decode('utf-8')
+        print('received: ', raw_daeta)
+        
+        try:
+            myfile = open('state', 'a')
+            myfile.writelines(raw_data)[LINE_COUNT]
+            LINE_COUNT = (LINE_COUNT + 1) % MAX_LINES
+        except IOError:
+                myfile.close()
+        finally:
+                myfile.close()
+        
         if not data:
             break
-        connection.sendall(str.encode(reply))
+        connection.sendall(str.encode(raw_data))
     connection.close()
 
 
