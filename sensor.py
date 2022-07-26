@@ -9,7 +9,7 @@ import socket
 import json
 HOST = '10.0.0.211' # ip address of displaying computer
 PORT = 1234
-TOTAL_FRAMES = 1000 # temp for now
+TOTAL_FRAMES = 3080 # temp for now
 
 
 ## determines the state of the sensors

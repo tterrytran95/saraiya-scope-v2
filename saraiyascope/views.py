@@ -8,10 +8,10 @@ from django.views.decorators.csrf import csrf_exempt # make the upload easier
 # museum view 
 def museum_image_get_view(request):
     if request.method == 'GET':
-        # print(request)
-        img_name = request.META['QUERY_STRING'].split("=")[0]
-        print(img_name)
-        img_filter = Museum.objects.filter(img_name=img_name) # temp hardoding
+        # print('request: ', request.META)
+        img_name = request.META['QUERY_STRING'].split("=")[1]
+        print(img_name.split(".")[0])
+        img_filter = CurrentFrame.objects.filter(img_name=img_name.split(".")[0]) # temp hardoding
         return render(request, 'display_museum_images.html', {'img' : img_filter})
         
 @csrf_exempt # upload images without csrf        
@@ -35,6 +35,8 @@ def post_cur_image(request):
         form = CurrentFrameForm()
     return render(request, 'museum_upload.html', {'form' : form})
         
+# DEPRECATED
+        
 @csrf_exempt # upload images without csrf
 def museum_image_upload_view(request):
     print(request)
@@ -55,27 +57,3 @@ def success(request):
 
 def error(request):
     return HttpResponse('error with upload')
-
-def display_image(request):
-    return HttpResponse("Image goes here")
-
-def index (request):
-    return HttpResponse("Hello World from Index")
-
-# Defining a function which
-# will receive request and
-# perform task depending
-# upon function definition
-def hello_geek (request):
-    # dictionary for initial data with
-    # field names as keys
-    context ={}
- 
-    # add the dictionary during initialization
-    context["dataset"] = GeeksModel.objects.all()
-         
-    return render(request, "hello_geek_view.html", context)
-
-
-def setup_museum(request):
-    return HttpResponse("Set up museum by uploading images here")

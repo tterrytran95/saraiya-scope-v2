@@ -3,10 +3,11 @@ import requests, os, cv2, time
 # import cv2
 
 URL = 'http://127.0.0.1:8000/post_cur_image'
-FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/scope/saraiyascope/frames/'
+# FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/scope/saraiyascope/frames/'
+FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/frames/'
 FRAMES = os.listdir(FRAME_DIR)
-FRAME_RATE = 5 
-VIDEO_PATH = './samples/mochu_ks.mp4'
+FRAME_RATE = 10
+VIDEO_PATH = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
 
 """
     * film is 9mins 6 seconds @ 60 fps 
@@ -23,10 +24,10 @@ def get_frames_from_mov(path):
     while success:
         success, image = vidObj.read() # vidObj object calls read # function extract frames
         if count % FRAME_RATE == 0 and success: # saves the frames with frame-count
-            cv2.imwrite("frames/frame%d.jpg" % count, image)
-            outframes.append("frames/frame%d.jpg" % count) # just save the name of the image 
+            out = cv2.imwrite(FRAME_DIR + 'frame%d.jpg' % count, image)
+            outframes.append("frame%d.jpg" % count) # just save the name of the image 
+            print('saved', "frame %d" % count)
         count += 1
-        print(count)
     return outframes
 
 def upload_images(frames):
@@ -38,11 +39,11 @@ def upload_images(frames):
         files = {'img': open(path, 'rb')}
         data = {'img_name': img_name}
         response = requests.post(URL, data = data, files=files)
-        print(response)
+        # print(response)
         
         i += 1
         if i % 200 == 0:
-            print('%2d/% uploaded', int(i / len(frames)))
+            print("%d uploaded" % (i / len(frames)))
             time.sleep(5) 
         
 def main():
@@ -50,6 +51,7 @@ def main():
     # frames = get_frames_from_mov(VIDEO_PATH)
     # print('%d frames extracted', len(frames))
     print('uploading images...')
-    upload_images(FRAMES)
+    print(len(FRAMES))
+    # upload_images(FRAMES)
     
 main()
