@@ -4,8 +4,24 @@ from .models import GeeksModel, Museum, CurrentFrame
 from django.shortcuts import render, redirect
 from .forms import MuseumForm, CurrentFrameForm
 from django.views.decorators.csrf import csrf_exempt # make the upload easier
+import json
 
-# museum view 
+from time import sleep
+
+from channels.generic.websocket import WebsocketConsumer
+# museum consumer for django channel
+
+class MuseumConsumer(WebsocketConsumer):
+    def connect(self):
+        self.accept()
+        # get files and send them into json object
+        for i in range(1, 100):
+            img = 'frame'+str(i*10)+'.jpg'
+            self.send(json.dumps({'img':img}))
+            time.sleep(.25)
+
+
+# museum view # tt
 def museum_image_get_view(request):
     if request.method == 'GET':
         # print('request: ', request.META)
@@ -14,7 +30,7 @@ def museum_image_get_view(request):
         img_filter = CurrentFrame.objects.filter(img_name=img_name.split(".")[0]) # temp hardoding
         return render(request, 'display_museum_images.html', {'img' : img_filter})
         
-@csrf_exempt # upload images without csrf        
+@csrf_exempt # upload images without csrf # tt
 def post_cur_image(request):
     if request.method == 'POST':
         print(request)
