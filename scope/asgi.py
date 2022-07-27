@@ -12,10 +12,13 @@ from channels.auth import AuthMiddlewareStack
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from saraiyascope.routing import museum_urlpatterns
+from django.urls import path
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'scope.settings')
 
+print('asdfa', URLRouter(museum_urlpatterns))
+
 application = ProtocolTypeRouter({
-    'http':get_asgi_application(),
-    'websocket':AuthMiddlewareStack(URLRouter(museum_urlpatterns))
+    'http' : get_asgi_application(),
+    'websocket' : AuthMiddlewareStack(URLRouter(museum_urlpatterns)),
 })

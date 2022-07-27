@@ -32,13 +32,21 @@
 						}
 					</script> -->
 					<script>
-						let socket = new WebSocket('ws://localhost:8000/route/MUSEUM');
+						let socket = new WebSocket('ws://127.0.0.1:8000/route/MUSEUM/');
 						console.log(socket)
-						socket.onmessage = function(event) {
-							let data = json.parse(event.data);
-							console.log(data);
-							document.querySelector('#frame_img').innerText = data.img;
-						}
+						socket.addEventListener('message', function (event) {
+							let data = JSON.parse(event.data);
+							// console.log(document.querySelector('#frame_img').src)
+							// let cur_img = document.querySelector('#frame_img').src;
+							let next_img = data.img
+							console.log(next_img);
+							document.querySelector('#frame_img').src = next_img;
+						});
+						// socket.onmessage = function(event) {
+						// 	let data = json.parse(event.data);
+						// 	console.log(data);
+						// }
+
 					</script>
 					
 					<img id="frame_img" src="{{ i.img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />

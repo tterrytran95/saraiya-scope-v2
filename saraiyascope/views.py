@@ -4,29 +4,12 @@ from .models import GeeksModel, Museum, CurrentFrame
 from django.shortcuts import render, redirect
 from .forms import MuseumForm, CurrentFrameForm
 from django.views.decorators.csrf import csrf_exempt # make the upload easier
-import json
-
-from time import sleep
-
-from channels.generic.websocket import WebsocketConsumer
-# museum consumer for django channel
-
-class MuseumConsumer(WebsocketConsumer):
-    def connect(self):
-        self.accept()
-        # get files and send them into json object
-        for i in range(1, 100):
-            img = 'frame'+str(i*10)+'.jpg'
-            self.send(json.dumps({'img':img}))
-            time.sleep(.25)
-
 
 # museum view # tt
 def museum_image_get_view(request):
     if request.method == 'GET':
         # print('request: ', request.META)
         img_name = request.META['QUERY_STRING'].split("=")[1]
-        print(img_name.split(".")[0])
         img_filter = CurrentFrame.objects.filter(img_name=img_name.split(".")[0]) # temp hardoding
         return render(request, 'display_museum_images.html', {'img' : img_filter})
         

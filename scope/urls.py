@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from saraiyascope.views import hello_geek, display_image # import the view 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("saraiyascope.urls")), # point the urls to the ones defined in saraiyascope
-    path('route/', include("saraiyascope.routing")), # point the urls to the ones defined in saraiyascope
+    path('', include("saraiyascope.routing")), # point the urls to the ones defined in saraiyascope
 ]

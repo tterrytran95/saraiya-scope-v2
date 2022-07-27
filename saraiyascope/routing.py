@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import MuseumConsumer
-
+from .consumers import MuseumConsumer
 museum_urlpatterns = [
-    path('MUSEUM/', MuseumConsumer.as_asgi())
+    path('route/MUSEUM/', MuseumConsumer.as_asgi())
 ]
+
