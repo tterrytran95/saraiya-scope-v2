@@ -90,7 +90,7 @@ while True:
         # data = {'state': cur_state, 'image': 'frame'+str(img_count)+'.jpg'}
         # json_data = json.dump(str(data))
         # ClientSocket.send(str.encode(current_state))
-        Input = cur_state + ',' + 'frame'+str(img_count)+'.jpg'
+        Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
         ClientSocket.send(str.encode(Input))
         Response = ClientSocket.recv(1024)
         # print(Response.decode('utf-8'))

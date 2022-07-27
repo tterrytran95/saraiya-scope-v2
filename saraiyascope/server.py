@@ -24,9 +24,9 @@ except socket.error as e:
 print('Waitiing for a Connection..')
 ServerSocket.listen(5)
 
-
+# handles the connection from the raspberry pi
 def threaded_client(connection):
-    connection.send(str.encode('Welcome to the Servern'))
+    connection.send(str.encode('Welcome to the Server'))
     max_lines = 10
     line_count = 0
     while True:
@@ -34,18 +34,18 @@ def threaded_client(connection):
         raw_data = data.decode('utf-8')
         print('received: ', raw_data)
         
-        # try:
-        #     myfile = open('state', 'w+')
-        #     print(raw_data)
-        #     print(line_count)
-            
-        #     myfile.writelines(raw_data)[line_count]
-        # except IOError:
-        #     myfile.close()
-        # finally:
-        #     myfile.close()
-        #     line_count = (line_count + 1) % max_lines
-                
+        with open('state', 'r+') as file:
+            contents = file.read()
+            file.seek(0)
+            file.write(raw_data+"\n"+contents)
+            # data = file.append(raw_data)
+        
+        # data[line_count] = raw_data
+        
+        # with open('state', 'w') as file:
+        #     file.writelines(data)
+        
+        line_count = (line_count + 1) % max_lines
         
         if not data:
             break
@@ -59,4 +59,4 @@ while True:
     start_new_thread(threaded_client, (Client, ))
     ThreadCount += 1
     print('Thread Number: ' + str(ThreadCount))
-ServerSocket.close()
+# ServerSocket.close()
