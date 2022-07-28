@@ -110,10 +110,13 @@ while True:
             if img_count < 0: img_count == 0
         
         
-        Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
-        ClientSocket.send(str.encode(Input))
-        Response = ClientSocket.recv(1024)
+        # Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+        # ClientSocket.send(str.encode(Input))
+        # Response = ClientSocket.recv(1024)
         # print(Response.decode('utf-8'))
           
+    Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+    ClientSocket.send(str.encode(Input))
+    Response = ClientSocket.recv(1024)
     time.sleep(.25)
 ClientSocket.close()
