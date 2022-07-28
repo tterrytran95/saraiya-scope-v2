@@ -16,8 +16,8 @@ TOTAL_FRAMES = 3080 # temp for now
 
 ## determines the state of the sensors
 def get_state(current, previous):
-    if current == previous:
-        return 'stable'
+    # if current == previous:
+    #     return 'stable'
     
     if current > previous:
         return 'forward'
@@ -131,15 +131,18 @@ while True:
         
         if cur_state == 'forward': 
             img_count = (img_count + 1) % TOTAL_FRAMES
+            Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+            ClientSocket.send(str.encode(Input))
+            Response = ClientSocket.recv(1024)
         elif cur_state == 'backward': 
             img_count -= 1
             if img_count < 0: img_count == 0
+            Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+            ClientSocket.send(str.encode(Input))
+            Response = ClientSocket.recv(1024)
         
-        Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
-        ClientSocket.send(str.encode(Input))
-        Response = ClientSocket.recv(1024)
     current_sample += 1
-    time.sleep(.25)
+    time.sleep(.10)
 
 
 ClientSocket.close()
