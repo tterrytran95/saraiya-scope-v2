@@ -31,7 +31,7 @@ def get_trending_state(count_dict):
         if count_dict[k] > max_value:
             state = k
             max_value = count_dict[k]
-        return state
+    return state
 
 def update_trend(state_count_dict, new_state):
     if new_state in state_count_dict:
@@ -97,10 +97,14 @@ while True:
     if p4 > max_value:
         current = 'prox4'
         max_value = p4
-
+    test_d = {
+        'p1' : prox1.proximity,
+        'p2' : prox2.proximity,
+        'p3' : prox3.proximity,
+        'p4' : prox4.proximity,
+    }
     new_state = get_state(current, previous)
     state_count_dict = update_trend(state_count_dict, new_state)
-    print(state_count_dict)
     
     # networking stuff 
     # if (cur_state == 'stable' and cur_state == get_state(current, previous)):
@@ -136,7 +140,6 @@ while True:
             Response = ClientSocket.recv(1024)
         elif cur_state == 'backward': 
             img_count = (img_count - 1) % TOTAL_FRAMES
-            # if img_count < 0: img_count == 0
             Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
             ClientSocket.send(str.encode(Input))
             Response = ClientSocket.recv(1024)
