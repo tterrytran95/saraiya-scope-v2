@@ -61,10 +61,10 @@ i2c = board.I2C()
 # Create the TCA9548A object and give it the I2C bus
 tca = adafruit_tca9548a.TCA9548A(i2c)
 
-prox1 = adafruit_vcnl4040.VCNL4040(tca[0])
-prox2 = adafruit_vcnl4040.VCNL4040(tca[7])
-prox3 = adafruit_vcnl4040.VCNL4040(tca[4])
-prox4 = adafruit_vcnl4040.VCNL4040(tca[3])
+prox1 = adafruit_vcnl4040.VCNL4040(tca[7])
+prox2 = adafruit_vcnl4040.VCNL4040(tca[0])
+prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
+prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
 
 current = 'prox1'
 previous = None
@@ -104,7 +104,7 @@ while True:
         'p4' : prox4.proximity,
     }
     current = get_trending_state(test_d)
-    print('cur_state: ',cur_state)
+    print('cur_state: ',current)
     new_state = get_state(current, previous)
     print('new_state: ',new_state)
     state_count_dict = update_trend(state_count_dict, new_state)
