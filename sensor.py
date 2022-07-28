@@ -12,6 +12,7 @@ PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
 
 
+
 ## determines the state of the sensors
 def get_state(current, previous):
     if current == previous:

@@ -36,8 +36,13 @@ def threaded_client(connection):
         
         with open('state', 'r+') as file:
             contents = file.read()
+            num_lines = len(contents.split("\n"))
             file.seek(0)
-            file.write(raw_data+"\n"+contents)
+            if num_lines >= 10:
+                file.truncate(0)
+                file.write(raw_data+"\n")
+            else:
+                file.write(raw_data+"\n"+contents)
         
         if not data:
             break
