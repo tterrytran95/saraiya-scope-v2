@@ -97,7 +97,9 @@ while True:
     else: # update the input 
         # cur_state = get_state(current,previous)
         cur_state = get_avg_state(state_count_dict)
+        print("1", state_count_dict)
         state_count_dict = {} # reset this
+        print("2", state_count_dict)
         # Input = get_state(current, previous)
         
         if cur_state == 'forward': 
@@ -106,9 +108,7 @@ while True:
             img_count -= 1
             if img_count < 0: img_count == 0
         
-        # data = {'state': cur_state, 'image': 'frame'+str(img_count)+'.jpg'}
-        # json_data = json.dump(str(data))
-        # ClientSocket.send(str.encode(current_state))
+        
         Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
         ClientSocket.send(str.encode(Input))
         Response = ClientSocket.recv(1024)
