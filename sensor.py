@@ -60,7 +60,10 @@ previous = None
 img_count = 0 # send this to host so they know which image to render
 cur_state = None
 state_count_dict = {}
+SAMPLE_RATE = 10
+current_sample = 0
 while True:
+    
     previous = current 
     max_value = -1
     
@@ -110,20 +113,24 @@ while True:
         # ClientSocket.send(str.encode(Input))
         # Response = ClientSocket.recv(1024)
         # print(Response.decode('utf-8'))
-          
-    cur_state = get_avg_state(state_count_dict)
-    print(cur_state)
-    print(state_count_dict)
-    state_count_dict = {} # reset this
     
-    if cur_state == 'forward': 
-        img_count = (img_count + 1) % TOTAL_FRAMES
-    elif cur_state == 'backward': 
-        img_count -= 1
-        if img_count < 0: img_count == 0
-    
-    Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
-    ClientSocket.send(str.encode(Input))
-    Response = ClientSocket.recv(1024)
+    if current_sample % SAMPLE_RATE == 0:
+        cur_state = get_avg_state(state_count_dict)
+        print(cur_state)
+        print(state_count_dict)
+        state_count_dict = {} # reset this
+        
+        if cur_state == 'forward': 
+            img_count = (img_count + 1) % TOTAL_FRAMES
+        elif cur_state == 'backward': 
+            img_count -= 1
+            if img_count < 0: img_count == 0
+        
+        Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+        ClientSocket.send(str.encode(Input))
+        Response = ClientSocket.recv(1024)
+    current_sample += 1
     time.sleep(.25)
+
+
 ClientSocket.close()
