@@ -25,13 +25,22 @@ def get_state(current, previous):
     if current < previous:
         return 'backward'
     
-def get_avg_state(count_dict):
+def get_trending_state(count_dict):
     max_value = -1
     for k in count_dict:
         if count_dict[k] > max_value:
             state = k
             max_value = count_dict[k]
         return state
+
+def update_trend(state_count_dict, new_state):
+    if new_state in state_count_dict:
+        state_count_dict[new_state] += 1
+    else:
+        state_count_dict[new_state] = 1
+    for k in state_count_dict:
+        state_count_dict[k] = state_count_dict[k] - 1 if (state_count_dict[k] - 1 > 0) else 0
+    # return state_count_dict  
 
 
 ## make socket connection to serveru
@@ -88,10 +97,8 @@ while True:
     #     max_value = p4
 
     new_state = get_state(current, previous)
-    if new_state in state_count_dict:
-        state_count_dict[new_state] += 1
-    else:
-        state_count_dict[new_state] = 1
+    update_trend(state_count_dict, new_state)
+    print(state_count_dict)
     
     # networking stuff 
     # if (cur_state == 'stable' and cur_state == get_state(current, previous)):
@@ -115,7 +122,7 @@ while True:
         # print(Response.decode('utf-8'))
     
     if current_sample % SAMPLE_RATE == 0:
-        cur_state = get_avg_state(state_count_dict)
+        cur_state = get_trending_state(state_count_dict)
         print(cur_state)
         print(state_count_dict)
         state_count_dict = {} # reset this
