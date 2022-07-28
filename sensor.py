@@ -71,10 +71,10 @@ prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
 # prox3.proximity_high_interrupt=2
 # prox4.proximity_high_interrupt=2
 
-prox1.proximity_interrupt="PS_INT_CLOSE"
-prox2.proximity_interrupt="PS_INT_CLOSE"
-prox3.proximity_interrupt="PS_INT_CLOSE"
-prox4.proximity_interrupt="PS_INT_CLOSE"
+prox1.proximity_high_threshold=3
+prox2.proximity_high_threshold=3
+prox3.proximity_high_threshold=3
+prox4.proximity_high_threshold=3
 
 current = 'prox1'
 previous = None
