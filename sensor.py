@@ -103,10 +103,10 @@ while True:
     #     current = 'prox4'
     #     max_value = p4
     test_d = {
-        'p1' : prox1.light_high_interrupt,
-        'p2' : prox2.light_high_interrupt,
-        'p3' : prox3.light_high_interrupt,
-        'p4' : prox4.light_high_interrupt,
+        'p1' : prox1.lux,
+        'p2' : prox2.lux,
+        'p3' : prox3.lux,
+        'p4' : prox4.lux,
     }
     print(test_d)
     current = get_trending_state(test_d)
