@@ -142,7 +142,7 @@ while True:
             Response = ClientSocket.recv(1024)
         
     current_sample += 1
-    time.sleep(.10)
+    time.sleep(.15)
 
 
 ClientSocket.close()
