@@ -112,7 +112,16 @@ while True:
         # print(Response.decode('utf-8'))
           
     cur_state = get_avg_state(state_count_dict)
+    print(cur_state)
+    print(state_count_dict)
     state_count_dict = {} # reset this
+    
+    if cur_state == 'forward': 
+        img_count = (img_count + 1) % TOTAL_FRAMES
+    elif cur_state == 'backward': 
+        img_count -= 1
+        if img_count < 0: img_count == 0
+    
     Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
     ClientSocket.send(str.encode(Input))
     Response = ClientSocket.recv(1024)
