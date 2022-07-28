@@ -66,10 +66,10 @@ prox2 = adafruit_vcnl4040.VCNL4040(tca[0])
 prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
 prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
 
-prox1.proximity_high_threshold=1
-prox2.proximity_high_threshold=1
-prox3.proximity_high_threshold=1
-prox4.proximity_high_threshold=1
+prox1.proximity_high_threshold=.5
+prox2.proximity_high_threshold=.5
+prox3.proximity_high_threshold=.5
+prox4.proximity_high_threshold=.5
 
 # prox1.light_low_threshold=1
 # prox1.light_low_threshold=1
