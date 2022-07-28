@@ -78,32 +78,34 @@ while True:
     previous = current 
     max_value = -1
     
-    p1 = prox1.proximity
-    if p1 > max_value:
-        current = 'prox1'
-        max_value = p1
+    # p1 = prox1.proximity
+    # if p1 > max_value:
+    #     current = 'prox1'
+    #     max_value = p1
     
-    p2 = prox2.proximity
-    if p2 > max_value:
-        current = 'prox2'
-        max_value = p2
+    # p2 = prox2.proximity
+    # if p2 > max_value:
+    #     current = 'prox2'
+    #     max_value = p2
     
-    p3 = prox3.proximity
-    if p3 > max_value:
-        current = 'prox3'
-        max_value = p3
+    # p3 = prox3.proximity
+    # if p3 > max_value:
+    #     current = 'prox3'
+    #     max_value = p3
         
-    p4 = prox4.proximity
-    if p4 > max_value:
-        current = 'prox4'
-        max_value = p4
+    # p4 = prox4.proximity
+    # if p4 > max_value:
+    #     current = 'prox4'
+    #     max_value = p4
     test_d = {
         'p1' : prox1.proximity,
         'p2' : prox2.proximity,
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
+    current = get_trending_state(test_d)
     new_state = get_state(current, previous)
+    print(new_state)
     state_count_dict = update_trend(state_count_dict, new_state)
     
     # networking stuff 
