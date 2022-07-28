@@ -93,6 +93,7 @@ while True:
     # networking stuff 
     if (cur_state == 'stable' and cur_state == get_state(current, previous)):
         cur_state = get_state(current,previous)
+        state_count_dict = {} # reset this
         pass # don't send it bc it's it's stable
     else: # update the input 
         # cur_state = get_state(current,previous)
