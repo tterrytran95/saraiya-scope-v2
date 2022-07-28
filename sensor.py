@@ -91,23 +91,19 @@ while True:
         state_count_dict[new_state] = 1
     
     # networking stuff 
-    if (cur_state == 'stable' and cur_state == get_state(current, previous)):
-        cur_state = get_state(current,previous)
-        state_count_dict = {} # reset this
-        pass # don't send it bc it's it's stable
-    else: # update the input 
-        # cur_state = get_state(current,previous)
-        cur_state = get_avg_state(state_count_dict)
-        print("1", state_count_dict)
-        state_count_dict = {} # reset this
-        print("2", state_count_dict)
-        # Input = get_state(current, previous)
+    # if (cur_state == 'stable' and cur_state == get_state(current, previous)):
+    #     cur_state = get_state(current,previous)
+    #     pass # don't send it bc it's it's stable
+    # else: # update the input 
+    #     cur_state = get_state(current,previous)
+    #     # cur_state = get_avg_state(state_count_dict)
+    #     print("1", state_count_dict)
         
-        if cur_state == 'forward': 
-            img_count = (img_count + 1) % TOTAL_FRAMES
-        elif cur_state == 'backward': 
-            img_count -= 1
-            if img_count < 0: img_count == 0
+    #     if cur_state == 'forward': 
+    #         img_count = (img_count + 1) % TOTAL_FRAMES
+    #     elif cur_state == 'backward': 
+    #         img_count -= 1
+    #         if img_count < 0: img_count == 0
         
         
         # Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
@@ -115,6 +111,8 @@ while True:
         # Response = ClientSocket.recv(1024)
         # print(Response.decode('utf-8'))
           
+    cur_state = get_avg_state(state_count_dict)
+    state_count_dict = {} # reset this
     Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
     ClientSocket.send(str.encode(Input))
     Response = ClientSocket.recv(1024)
