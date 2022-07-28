@@ -40,7 +40,7 @@ def update_trend(state_count_dict, new_state):
         state_count_dict[new_state] = 1
     for k in state_count_dict:
         state_count_dict[k] = state_count_dict[k] - 1 if (state_count_dict[k] - 1 > 0) else 0
-    # return state_count_dict  
+    return state_count_dict  
 
 
 ## make socket connection to serveru
@@ -97,7 +97,7 @@ while True:
     #     max_value = p4
 
     new_state = get_state(current, previous)
-    update_trend(state_count_dict, new_state)
+    state_count_dict = update_trend(state_count_dict, new_state)
     print(state_count_dict)
     
     # networking stuff 
