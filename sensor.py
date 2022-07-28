@@ -66,10 +66,10 @@ prox2 = adafruit_vcnl4040.VCNL4040(tca[0])
 prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
 prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
 
-prox1.proximity_high_threshold=1
-prox2.proximity_high_threshold=1
-prox3.proximity_high_threshold=1
-prox4.proximity_high_threshold=1
+prox1.proximity_high_threshold=10
+prox2.proximity_high_threshold=10
+prox3.proximity_high_threshold=10
+prox4.proximity_high_threshold=10
 
 # prox1.light_low_threshold=1
 # prox1.light_low_threshold=1
@@ -108,10 +108,10 @@ while True:
     #     current = 'prox4'
     #     max_value = p4
     test_d = {
-        'p1' : prox1.proximity,
-        'p2' : prox2.proximity,
-        'p3' : prox3.proximity,
-        'p4' : prox4.proximity,
+        'p1' : prox1.proximity_high_threshold,
+        'p2' : prox2.proximity_high_threshold,
+        'p3' : prox3.proximity_high_threshold,
+        'p4' : prox4.proximity_high_threshold,
     }
     print(test_d)
     current = get_trending_state(test_d)
