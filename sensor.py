@@ -71,10 +71,10 @@ prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
 # prox3.proximity_high_interrupt=2
 # prox4.proximity_high_interrupt=2
 
-prox1.proximity_high_threshold=3
-prox2.proximity_high_threshold=3
-prox3.proximity_high_threshold=3
-prox4.proximity_high_threshold=3
+prox1.light_low_threshold=1
+prox1.light_low_threshold=1
+prox1.light_low_threshold=1
+prox1.light_low_threshold=1
 
 current = 'prox1'
 previous = None
@@ -108,10 +108,10 @@ while True:
     #     current = 'prox4'
     #     max_value = p4
     test_d = {
-        'p1' : prox1.proximity,
-        'p2' : prox2.proximity,
-        'p3' : prox3.proximity,
-        'p4' : prox4.proximity,
+        'p1' : prox1.lux,
+        'p2' : prox2.lux,
+        'p3' : prox3.lux,
+        'p4' : prox4.lux,
     }
     print(test_d)
     current = get_trending_state(test_d)
