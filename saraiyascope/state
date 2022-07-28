@@ -1,4 +1,9 @@
 
+forward,frame0.jpg
+forward,frame30790.jpg
+backward,frame30780.jpg
+backward,frame30790.jpg
+
 forward,frame30720.jpg
 backward,frame30710.jpg
 backward,frame30720.jpg
