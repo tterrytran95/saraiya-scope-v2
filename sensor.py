@@ -61,10 +61,10 @@ i2c = board.I2C()
 # Create the TCA9548A object and give it the I2C bus
 tca = adafruit_tca9548a.TCA9548A(i2c)
 
-prox1 = adafruit_vcnl4040.VCNL4040(tca[7])
-prox2 = adafruit_vcnl4040.VCNL4040(tca[0])
-prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
-prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
+prox1 = adafruit_vcnl4040.VCNL4040(tca[7], light_high_threshold=5)
+prox2 = adafruit_vcnl4040.VCNL4040(tca[0], light_high_threshold=5)
+prox3 = adafruit_vcnl4040.VCNL4040(tca[3], light_high_threshold=5)
+prox4 = adafruit_vcnl4040.VCNL4040(tca[4], light_high_threshold=5)
 
 current = 'prox1'
 previous = None
@@ -98,10 +98,10 @@ while True:
     #     current = 'prox4'
     #     max_value = p4
     test_d = {
-        'p1' : prox1.lux,
-        'p2' : prox2.lux,
-        'p3' : prox3.lux,
-        'p4' : prox4.lux,
+        'p1' : prox1.light_high_interrupt,
+        'p2' : prox2.light_high_interrupt,
+        'p3' : prox3.light_high_interrupt,
+        'p4' : prox4.light_high_interrupt,
     }
     print(test_d)
     current = get_trending_state(test_d)
