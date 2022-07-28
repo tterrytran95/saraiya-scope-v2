@@ -72,9 +72,9 @@ prox3.proximity_high_threshold=10
 prox4.proximity_high_threshold=10
 
 prox1.proximity_interrupt=prox1.PS_INT_CLOSE
-prox1.proximity_interrupt=prox2.PS_INT_CLOSE
-prox1.proximity_interrupt=prox3.PS_INT_CLOSE
-prox1.proximity_interrupt=prox4.PS_INT_CLOSE
+prox2.proximity_interrupt=prox2.PS_INT_CLOSE
+prox3.proximity_interrupt=prox3.PS_INT_CLOSE
+prox4.proximity_interrupt=prox4.PS_INT_CLOSE
 
 current = 'prox1'
 previous = None
