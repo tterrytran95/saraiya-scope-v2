@@ -103,10 +103,9 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
+    print(test_d)
     current = get_trending_state(test_d)
-    print('cur_state: ',current)
     new_state = get_state(current, previous)
-    print('new_state: ',new_state)
     state_count_dict = update_trend(state_count_dict, new_state)
     
     # networking stuff 
