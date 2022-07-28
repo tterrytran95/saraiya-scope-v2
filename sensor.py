@@ -7,7 +7,8 @@ import sys
 import adafruit_vcnl4040
 import socket
 import json
-HOST = '10.0.0.211' # ip address of displaying computer
+# HOST = '10.0.0.211' # ip address of displaying computer
+HOST = '192.168.42.54' # ip address of displaying computer
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
 
@@ -25,7 +26,7 @@ def get_state(current, previous):
         return 'backward'
 
 
-## make socket connection to server
+## make socket connection to serveru
 ClientSocket = socket.socket()
 print('Waiting for connection')
 try:
