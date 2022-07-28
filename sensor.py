@@ -24,6 +24,14 @@ def get_state(current, previous):
     
     if current < previous:
         return 'backward'
+    
+def get_avg_state(count_dict):
+    max_value = -1
+    for k in count_dict:
+        if count_dict[k] > max_value:
+            state = k
+            max_value = count_dict[k]
+        return state
 
 
 ## make socket connection to serveru
@@ -51,6 +59,7 @@ current = 'prox1'
 previous = None
 img_count = 0 # send this to host so they know which image to render
 cur_state = None
+state_count_dict = {}
 while True:
     previous = current 
     max_value = -1
@@ -74,13 +83,21 @@ while True:
     if p4 > max_value:
         current = 'prox4'
         max_value = p4
+
+    new_state = get_state(current, previous)
+    if new_state in state_count_dict:
+        state_count_dict[new_state] += 1
+    else:
+        state_count_dict[new_state] = 1
     
     # networking stuff 
     if (cur_state == 'stable' and cur_state == get_state(current, previous)):
         cur_state = get_state(current,previous)
         pass # don't send it bc it's it's stable
     else: # update the input 
-        cur_state = get_state(current,previous)
+        # cur_state = get_state(current,previous)
+        cur_state = get_avg_state(state_count_dict)
+        state_count_dict = {} # reset this
         # Input = get_state(current, previous)
         
         if cur_state == 'forward': 
@@ -96,7 +113,6 @@ while True:
         ClientSocket.send(str.encode(Input))
         Response = ClientSocket.recv(1024)
         # print(Response.decode('utf-8'))
-    
           
     time.sleep(.25)
 ClientSocket.close()
