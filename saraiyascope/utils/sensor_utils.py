@@ -5,13 +5,6 @@ import adafruit_vcnl4040
 import board
 
 THRESH = 15
-PROX_TIME = PS_8T
-if 'PROX_TIME' in sys.argv:
-    for i in range(len(sys.argv)):
-        if sys.argv[i] == 'PROX_TIME':
-            PROX_TIME = sys.argv[i+1]
-            break
-print(PROX_TIME)
 
 # utils for sensor
 def initialize_sensors():
@@ -31,10 +24,10 @@ def initialize_sensors():
     prox3.proximity_high_threshold=20
     prox4.proximity_high_threshold=20
     
-    prox7.proximity_integration_time=prox7.PS_8T
-    prox0.proximity_integration_time=prox0.PS_8T
-    prox3.proximity_integration_time=prox3.PS_8T
-    prox4.proximity_integration_time=prox4.PS_8T
+    prox7.proximity_integration_time=prox7.PS_4T
+    prox0.proximity_integration_time=prox0.PS_4T
+    prox3.proximity_integration_time=prox3.PS_4T
+    prox4.proximity_integration_time=prox4.PS_4T
 
     prox7.proximity_interrupt=prox7.PS_INT_CLOSE
     prox0.proximity_interrupt=prox0.PS_INT_CLOSE
