@@ -25,7 +25,7 @@ except socket.error as e:
 Response = ClientSocket.recv(1024)
 
 ## Step 2: Initialize sensors ## 
-prox1, prox2, prox3, prox4 = initialize_sensors()
+prox7, prox0, prox3, prox4 = initialize_sensors()
 
 ## Step 3: Start sensors ## 
 current = 'prox1'
@@ -37,11 +37,10 @@ state_count_dict = {}
 while True:
     
     previous = current 
-    max_value = -1
     
     prox_dict = {
-        'p1' : prox1.proximity,
-        'p2' : prox2.proximity,
+        'p7' : prox7.proximity,
+        'p0' : prox0.proximity,
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
