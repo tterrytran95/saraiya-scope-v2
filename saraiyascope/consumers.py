@@ -8,8 +8,12 @@ class MuseumConsumer(WebsocketConsumer):
         self.accept()
         prefix="http://localhost:8000/media/images/"
         
-        for i in range(1000, 3000):
-            img = 'frame'+str(i*10)+'.jpg'
+        # for i in range(1000, 3000):
+        MAX_FRAMES = 3000
+        i = 0
+        while true:
+            cur_frame = (i * 10) % MAX_FRAMES
+            img = 'frame'+str(cur_frame)+'.jpg'
             res = self.send(json.dumps({'img':prefix+img}))
             print('response:', res)
             time.sleep(.10)

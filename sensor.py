@@ -7,11 +7,11 @@ import sys
 import adafruit_vcnl4040
 import socket
 import json
-# HOST = '10.0.0.211' # ip address of displaying computer
-HOST = '192.168.42.54' # ip address of displaying computer
+# HOST = '10.0.0.211' # ip address of displaying computer # terry's house
+# HOST = '192.168.42.54' # ip address of displaying computer # alex's house 
+HOST = '192.168.1.26' # ip address of displaying computer # alex's house 
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
-
 
 
 ## determines the state of the sensors
