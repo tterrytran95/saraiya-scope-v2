@@ -30,6 +30,13 @@ def initialize_sensors():
     return prox1, prox2, prox3, prox4
 
 
+def get_sensor(prox_dict):
+    for k in prox_dict:
+        if prox_dict[k] == True: 
+            return k
+    return False        
+
+
 ## determines the state of the sensors
 def get_direction(current, previous):
     if current == previous:
