@@ -20,10 +20,10 @@ def initialize_sensors():
     prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
     
     # prox settings
-    prox7.proximity_high_threshold=20
-    prox0.proximity_high_threshold=20
-    prox3.proximity_high_threshold=20
-    prox4.proximity_high_threshold=20
+    prox7.proximity_high_threshold=30
+    prox0.proximity_high_threshold=30
+    prox3.proximity_high_threshold=30
+    prox4.proximity_high_threshold=30
     
     prox7.proximity_integration_time=prox7.PS_1_5T
     prox0.proximity_integration_time=prox0.PS_1_5T

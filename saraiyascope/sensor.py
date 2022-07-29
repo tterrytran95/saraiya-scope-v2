@@ -45,24 +45,7 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
-    
-    lux_dict = {
-        'p7' : prox7.lux,
-        'p0' : prox0.lux,
-        'p3' : prox3.lux,
-        'p4' : prox4.lux,
-    }
-    
-    lux_interrupt_dict = {
-        'p7' : prox7.light_low_interrupt,
-        'p0' : prox0.light_low_interrupt,
-        'p3' : prox3.light_low_interrupt,
-        'p4' : prox4.light_low_interrupt,
-    }
-    
-    print("####")
-    print(lux_dict)
-    print(lux_interrupt_dict)
+
     # current = get_trending_state(prox_dict)
     if get_sensor(prox_dict) is not None:
         current = get_sensor(prox_dict)
