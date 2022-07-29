@@ -13,7 +13,9 @@ import json
 # HOST = '192.168.42.54' # ip address of displaying computer # alex's house 
 # HOST = '192.168.1.26' # ip address of displaying computer # baltic mill
 
-HOST = sys.argv[2].split("=")[1]
+print("SYS", sys.argv)
+HOST = sys.argv[1].split("=")[1]
+# HOST = '10.0.0.211' # ip address of displaying computer # terry's house
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
 

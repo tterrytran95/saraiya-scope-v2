@@ -12,6 +12,7 @@ import fileinput
 LINE_COUNT = 0
 MAX_LINES = 10
 
+# print("SYS", sys.argv[1].split("=")[1])
 
 ServerSocket = socket.socket()
 host = '127.0.0.1'
