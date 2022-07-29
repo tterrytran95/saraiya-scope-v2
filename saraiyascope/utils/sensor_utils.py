@@ -26,6 +26,8 @@ def initialize_sensors():
     prox2.proximity_interrupt=prox2.PS_INT_CLOSE
     prox3.proximity_interrupt=prox3.PS_INT_CLOSE
     prox4.proximity_interrupt=prox4.PS_INT_CLOSE
+    
+    return prox1, prox2, prox3, prox4
 
 
 ## determines the state of the sensors

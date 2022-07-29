@@ -25,7 +25,7 @@ except socket.error as e:
 Response = ClientSocket.recv(1024)
 
 ## Step 2: Initialize sensors ## 
-initialize_sensors()
+prox1, prox2, prox3, prox4 = initialize_sensors()
 
 ## Step 3: Start sensors ## 
 current = 'prox1'
