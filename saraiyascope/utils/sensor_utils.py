@@ -2,6 +2,7 @@ import qwiic_tca9548a
 import qwiic_proximity
 import adafruit_tca9548a
 import adafruit_vcnl4040
+import board
 
 # utils for sensor
 def initialize_sensors():

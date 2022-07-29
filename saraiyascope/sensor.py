@@ -1,6 +1,6 @@
 # usage python3 sensor.py HOST=10.0.0.21
 
-import time, board, sys, socket, json
+import time, sys, socket, json
 from utils.sensor_utils import *
 
 # HOST = '10.0.0.211' # ip address of displaying computer # terry's house
