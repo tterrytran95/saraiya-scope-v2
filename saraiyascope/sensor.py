@@ -12,7 +12,7 @@ HOST = sys.argv[1].split("=")[1]
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
 SAMPLE_RATE = 1000
-THRESH = 30
+THRESH = 15
 
 ## Step 1: Make socket connection to server ## 
 ClientSocket = socket.socket()
@@ -51,8 +51,8 @@ while True:
         current = get_sensor(prox_dict)
         print("CURRERNT: ", current)
         
-    new_state = get_direction(current, previous)
-    state_count_dict = update_trend(state_count_dict, new_state)
+    # new_state = get_direction(current, previous)
+    # state_count_dict = update_trend(state_count_dict, new_state)
 
     if current_sample % SAMPLE_RATE == 0:
     # if current != previous:
