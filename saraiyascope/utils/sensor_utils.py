@@ -18,7 +18,8 @@ def initialize_sensors():
     prox0 = adafruit_vcnl4040.VCNL4040(tca[0])
     prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
     prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
-
+    
+    # prox settings
     prox7.proximity_high_threshold=20
     prox0.proximity_high_threshold=20
     prox3.proximity_high_threshold=20
@@ -28,11 +29,24 @@ def initialize_sensors():
     prox0.proximity_integration_time=prox0.PS_1_5T
     prox3.proximity_integration_time=prox3.PS_1_5T
     prox4.proximity_integration_time=prox4.PS_1_5T
-
+        
     prox7.proximity_interrupt=prox7.PS_INT_CLOSE
     prox0.proximity_interrupt=prox0.PS_INT_CLOSE
     prox3.proximity_interrupt=prox3.PS_INT_CLOSE
     prox4.proximity_interrupt=prox4.PS_INT_CLOSE
+    
+    # light settings
+    prox7.light_low_threshold=1
+    prox0.light_low_threshold=1
+    prox3.light_low_threshold=1
+    prox4.light_low_threshold=1
+    
+    
+    prox7.light_integration_time=prox7.ALS_640MS
+    prox0.light_integration_time=prox0.ALS_640MS
+    prox3.light_integration_time=prox3.ALS_640MS
+    prox4.light_integration_time=prox4.ALS_640MS
+    
     
     return prox7, prox0, prox3, prox4
 
@@ -42,6 +56,9 @@ def get_sensor(prox_dict):
         if prox_dict[k] >= THRESH: 
             return k
     return None        
+
+def get_sensor_lux(lux_dict):
+    pass
 
 
 def is_forward(current, previous):

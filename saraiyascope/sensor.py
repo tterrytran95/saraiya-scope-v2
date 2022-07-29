@@ -45,21 +45,38 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
-    print(prox_dict)
+    
+    lux_dict = {
+        'p7' : prox7.lux,
+        'p0' : prox0.lux,
+        'p3' : prox3.lux,
+        'p4' : prox4.lux,
+    }
+    
+    lux_interrupt_dict = {
+        'p7' : prox7.light_light_interrupt,
+        'p0' : prox0.light_light_interrupt,
+        'p3' : prox3.light_light_interrupt,
+        'p4' : prox4.light_light_interrupt,
+    }
+    
+    print("####")
+    print(lux_dict)
+    print(lux_interrupt_dict)
     # current = get_trending_state(prox_dict)
     if get_sensor(prox_dict) is not None:
         current = get_sensor(prox_dict)
         # print("sensor triggered: ", current)
         
     direction = get_direction(current, previous)
-    print(direction)
+    # print(direction)
     # state_count_dict = update_trend(state_count_dict, new_state)
 
     if current_sample % SAMPLE_RATE == 0:
     # if current != previous:
         # direction = get_trending_state(state_count_dict)
         direction = get_direction(current, previous)
-        print("direction sent to server: ", direction)
+        # print("direction sent to server: ", direction)
         # print(state_count_dict)
         # state_count_dict = {} # reset this
         
