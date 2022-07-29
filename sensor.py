@@ -74,10 +74,10 @@ prox2 = adafruit_vcnl4040.VCNL4040(tca[0])
 prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
 prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
 
-prox1.proximity_high_threshold=10
-prox2.proximity_high_threshold=10
-prox3.proximity_high_threshold=10
-prox4.proximity_high_threshold=10
+prox1.proximity_high_threshold=20
+prox2.proximity_high_threshold=20
+prox3.proximity_high_threshold=20
+prox4.proximity_high_threshold=20
 
 prox1.proximity_interrupt=prox1.PS_INT_CLOSE
 prox2.proximity_interrupt=prox2.PS_INT_CLOSE
@@ -169,7 +169,7 @@ while True:
             Response = ClientSocket.recv(1024)
         
     current_sample += 1
-    time.sleep(.15)
+    # time.sleep(.15)
 
 
 ClientSocket.close()
