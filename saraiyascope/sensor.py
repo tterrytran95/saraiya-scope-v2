@@ -45,7 +45,15 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
-
+    prox_interrupt_dict = {
+        'p7' : prox7.proximity_high_interrupt,
+        'p0' : prox0.proximity_high_interrupt,
+        'p3' : prox3.proximity_high_interrupt,
+        'p4' : prox4.proximity_high_interrupt,
+    }
+    print('######')
+    print(prox_dict)
+    print(prox_interrupt_dict)
     # current = get_trending_state(prox_dict)
     if get_sensor(prox_dict) is not None:
         current = get_sensor(prox_dict)
