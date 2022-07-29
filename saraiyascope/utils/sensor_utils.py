@@ -32,7 +32,7 @@ def initialize_sensors():
 
 def get_sensor(prox_dict):
     for k in prox_dict:
-        if prox_dict[k] == True: 
+        if prox_dict[k] >= THRESH: 
             return k
     return None        
 
