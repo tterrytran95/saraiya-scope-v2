@@ -41,6 +41,11 @@ def initialize_sensors():
     prox3.light_low_threshold=1
     prox4.light_low_threshold=1
     
+    prox7.light_interrupt=1
+    prox0.light_interrupt=1
+    prox3.light_interrupt=1
+    prox4.light_interrupt=1
+    
     
     prox7.light_integration_time=prox7.ALS_640MS
     prox0.light_integration_time=prox0.ALS_640MS
