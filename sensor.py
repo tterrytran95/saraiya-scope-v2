@@ -128,7 +128,7 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
-    # print(test_d)
+    print(test_d)
     current = get_trending_state(test_d)
     new_state = get_state(current, previous)
     state_count_dict = update_trend(state_count_dict, new_state)
@@ -170,16 +170,16 @@ while True:
             Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
             ClientSocket.send(str.encode(Input))
             Response = ClientSocket.recv(1024)
-        else:
-            Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
-            ClientSocket.send(str.encode(Input))
-            Response = ClientSocket.recv(1024)
+        # else:
+        #     Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+        #     ClientSocket.send(str.encode(Input))
+        #     Response = ClientSocket.recv(1024)
             
 
             
         
     current_sample += 1
-    # time.sleep(.15)
+    time.sleep(.15)
 
 
 ClientSocket.close()
