@@ -54,8 +54,8 @@ while True:
     new_state = get_direction(current, previous)
     state_count_dict = update_trend(state_count_dict, new_state)
 
-    # if current_sample % SAMPLE_RATE == 0:
-    if current != previous:
+    if current_sample % SAMPLE_RATE == 0:
+    # if current != previous:
         # direction = get_trending_state(state_count_dict)
         direction = get_direction(current, previous)
         print(direction)
