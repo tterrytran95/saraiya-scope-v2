@@ -34,7 +34,6 @@ img_count = 0 # send this to host so they know which image to render
 direction = None
 current_sample = 0
 state_count_dict = {}
-stable_count = 0
 while True:
     
     previous = current 
@@ -51,7 +50,7 @@ while True:
         current = get_sensor(prox_dict)
         # print("sensor triggered: ", current)
         
-    direction = get_direction(current, previous, stable_count)
+    direction = get_direction(current, previous)
     print(direction)
     # state_count_dict = update_trend(state_count_dict, new_state)
 
