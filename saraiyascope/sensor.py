@@ -11,7 +11,7 @@ from utils.sensor_utils import *
 HOST = sys.argv[1].split("=")[1]
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
-SAMPLE_RATE = 1000
+SAMPLE_RATE = 100
 THRESH = 15
 
 ## Step 1: Make socket connection to server ## 
@@ -48,7 +48,7 @@ while True:
     # current = get_trending_state(prox_dict)
     if get_sensor(prox_dict) is not None:
         current = get_sensor(prox_dict)
-        print("sensor triggered: ", current)
+        # print("sensor triggered: ", current)
         
     direction = get_direction(current, previous)
     print(direction)
