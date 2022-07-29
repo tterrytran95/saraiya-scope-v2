@@ -15,6 +15,7 @@ import json
 
 print("SYS", sys.argv)
 HOST = sys.argv[1].split("=")[1]
+print(HOST)
 # HOST = '10.0.0.211' # ip address of displaying computer # terry's house
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
