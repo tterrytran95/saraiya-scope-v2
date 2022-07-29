@@ -4,6 +4,8 @@ import adafruit_tca9548a
 import adafruit_vcnl4040
 import board
 
+THRESH = 15
+
 # utils for sensor
 def initialize_sensors():
     # Create I2C bus as normal
