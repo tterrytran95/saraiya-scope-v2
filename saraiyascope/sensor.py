@@ -83,7 +83,7 @@ while True:
             Response = ClientSocket.recv(1024)
         else:
             stable_count += 1
-            if stable_count >= 30:
+            if stable_count >= 50:
                 Input = direction + ',' + 'frame'+str(img_count*10)+'.jpg'
                 ClientSocket.send(str.encode(Input))
                 Response = ClientSocket.recv(1024)
