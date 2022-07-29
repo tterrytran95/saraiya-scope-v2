@@ -35,6 +35,7 @@ def get_state(current, previous):
     
 def get_trending_state(count_dict):
     max_value = -1
+    state = 'stable'
     for k in count_dict:
         if count_dict[k] > max_value:
             state = k
