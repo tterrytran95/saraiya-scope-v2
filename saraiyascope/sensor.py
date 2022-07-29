@@ -51,6 +51,7 @@ while True:
     }
     print(test_d)
     current = get_trending_state(test_d)
+    print(current)
     new_state = get_state(current, previous)
     state_count_dict = update_trend(state_count_dict, new_state)
 
