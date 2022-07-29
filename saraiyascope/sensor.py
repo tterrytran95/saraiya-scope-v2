@@ -34,6 +34,7 @@ img_count = 0 # send this to host so they know which image to render
 direction = None
 current_sample = 0
 state_count_dict = {}
+stable_count = 0
 while True:
     
     previous = current 
@@ -73,9 +74,12 @@ while True:
             ClientSocket.send(str.encode(Input))
             Response = ClientSocket.recv(1024)
         else:
-            Input = direction + ',' + 'frame'+str(img_count*10)+'.jpg'
-            ClientSocket.send(str.encode(Input))
-            Response = ClientSocket.recv(1024)
+            stable_count += 1
+            if stable_count >= 10:
+                Input = direction + ',' + 'frame'+str(img_count*10)+'.jpg'
+                ClientSocket.send(str.encode(Input))
+                Response = ClientSocket.recv(1024)
+                stable_count = 0 # reset it
 
     current_sample += 1
     time.sleep(.15)
