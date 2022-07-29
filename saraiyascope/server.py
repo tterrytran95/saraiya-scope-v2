@@ -3,7 +3,7 @@
 # this server will accept image and pass on to browser
 
 import socket
-import os
+import os, sys
 from _thread import *
 import json
 import io
@@ -11,6 +11,7 @@ import fileinput
 
 LINE_COUNT = 0
 MAX_LINES = 10
+
 
 ServerSocket = socket.socket()
 host = '127.0.0.1'

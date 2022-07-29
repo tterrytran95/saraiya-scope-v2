@@ -1,3 +1,5 @@
+# usage python3 sensor.py HOST=10.0.0.21
+
 import time
 import board
 import qwiic_tca9548a
@@ -9,9 +11,12 @@ import socket
 import json
 # HOST = '10.0.0.211' # ip address of displaying computer # terry's house
 # HOST = '192.168.42.54' # ip address of displaying computer # alex's house 
-HOST = '192.168.1.26' # ip address of displaying computer # alex's house 
+# HOST = '192.168.1.26' # ip address of displaying computer # baltic mill
+
+HOST = sys.argv[2].split("=")[1]
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
+
 
 
 ## determines the state of the sensors
