@@ -4,10 +4,12 @@ import requests, os, cv2, time
 
 URL = 'http://127.0.0.1:8000/post_cur_image'
 # FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/scope/saraiyascope/frames/'
-FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/frames/'
+# FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/frames/'
+FRAME_DIR = './saraiya-scope-v2/saraiyascope/frames/'
 FRAMES = os.listdir(FRAME_DIR)
 FRAME_RATE = 10
-VIDEO_PATH = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
+# VIDEO_PATH = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
+VIDEO_PATH = './saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
 
 """
     * film is 9mins 6 seconds @ 60 fps 
