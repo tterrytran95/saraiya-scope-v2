@@ -13,7 +13,7 @@ import json
 # HOST = '192.168.42.54' # ip address of displaying computer # alex's house 
 # HOST = '192.168.1.26' # ip address of displaying computer # baltic mill
 
-print("SYS", sys.argv)
+
 HOST = sys.argv[1].split("=")[1]
 print(HOST)
 # HOST = '10.0.0.211' # ip address of displaying computer # terry's house
@@ -116,14 +116,14 @@ while True:
     #     current = 'prox4'
     #     max_value = p4
     test_d = {
-        'p1' : prox1.proximity_high_interrupt,
-        'p2' : prox2.proximity_high_interrupt,
-        'p3' : prox3.proximity_high_interrupt,
-        'p4' : prox4.proximity_high_interrupt,
-        # 'p1' : prox1.proximity,
-        # 'p2' : prox2.proximity,
-        # 'p3' : prox3.proximity,
-        # 'p4' : prox4.proximity,
+        # 'p1' : prox1.proximity_high_interrupt,
+        # 'p2' : prox2.proximity_high_interrupt,
+        # 'p3' : prox3.proximity_high_interrupt,
+        # 'p4' : prox4.proximity_high_interrupt,
+        'p1' : prox1.proximity,
+        'p2' : prox2.proximity,
+        'p3' : prox3.proximity,
+        'p4' : prox4.proximity,
     }
     print(test_d)
     current = get_trending_state(test_d)
