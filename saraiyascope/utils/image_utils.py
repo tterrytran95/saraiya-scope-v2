@@ -50,9 +50,9 @@ def upload_images(frames):
         
 def main():
     print('processing frames...')
-    # frames = get_frames_from_mov(VIDEO_PATH)
-    # print('%d frames extracted', len(frames))
-    print('uploading images...')
+    frames = get_frames_from_mov(VIDEO_PATH)
+    print('%d frames extracted', len(frames))
+    # print('uploading images...')
     print(len(FRAMES))
     # upload_images(FRAMES)
     
