@@ -9,6 +9,7 @@ import json
 import io
 import fileinput
 
+
 LINE_COUNT = 0
 MAX_LINES = 10
 
