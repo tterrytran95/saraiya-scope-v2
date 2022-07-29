@@ -54,10 +54,10 @@ while True:
     }
     
     lux_interrupt_dict = {
-        'p7' : prox7.light_light_interrupt,
-        'p0' : prox0.light_light_interrupt,
-        'p3' : prox3.light_light_interrupt,
-        'p4' : prox4.light_light_interrupt,
+        'p7' : prox7.light_low_interrupt,
+        'p0' : prox0.light_low_interrupt,
+        'p3' : prox3.light_low_interrupt,
+        'p4' : prox4.light_low_interrupt,
     }
     
     print("####")
