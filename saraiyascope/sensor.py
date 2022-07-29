@@ -45,20 +45,21 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
-    print(prox_dict)
+    # print(prox_dict)
     # current = get_trending_state(prox_dict)
     if get_sensor(prox_dict) is not None:
         current = get_sensor(prox_dict)
-        print("CURRERNT: ", current)
+        print("sensor triggered: ", current)
         
-    # new_state = get_direction(current, previous)
+    direction = get_direction(current, previous)
+    print(direction)
     # state_count_dict = update_trend(state_count_dict, new_state)
 
     if current_sample % SAMPLE_RATE == 0:
     # if current != previous:
         # direction = get_trending_state(state_count_dict)
         direction = get_direction(current, previous)
-        print(direction)
+        print("direction sent to server: ", direction)
         # print(state_count_dict)
         # state_count_dict = {} # reset this
         
