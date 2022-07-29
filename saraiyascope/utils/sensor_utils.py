@@ -34,7 +34,7 @@ def get_sensor(prox_dict):
     for k in prox_dict:
         if prox_dict[k] == True: 
             return k
-    return False        
+    return None        
 
 
 ## determines the state of the sensors

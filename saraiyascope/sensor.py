@@ -47,8 +47,9 @@ while True:
     }
     print(prox_dict)
     # current = get_trending_state(prox_dict)
-    current = get_sensor(prox_dict)
-    print(current)
+    if get_sensor(prox_dict) is not None:
+        current = get_sensor(prox_dict)
+        
     new_state = get_direction(current, previous)
     state_count_dict = update_trend(state_count_dict, new_state)
 
