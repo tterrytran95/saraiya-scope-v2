@@ -167,6 +167,13 @@ while True:
             Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
             ClientSocket.send(str.encode(Input))
             Response = ClientSocket.recv(1024)
+        else:
+            Input = cur_state + ',' + 'frame'+str(img_count*10)+'.jpg'
+            ClientSocket.send(str.encode(Input))
+            Response = ClientSocket.recv(1024)
+            
+
+            
         
     current_sample += 1
     # time.sleep(.15)
