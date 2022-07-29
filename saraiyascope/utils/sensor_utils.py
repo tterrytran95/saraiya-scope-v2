@@ -5,6 +5,13 @@ import adafruit_vcnl4040
 import board
 
 THRESH = 15
+PROX_TIME = PS_8T
+if 'PROX_TIME' in sys.argv:
+    for i in range(len(sys.argv)):
+        if sys.argv[i] == 'PROX_TIME':
+            PROX_TIME = sys.argv[i+1]
+            break
+print(PROX_TIME)
 
 # utils for sensor
 def initialize_sensors():
