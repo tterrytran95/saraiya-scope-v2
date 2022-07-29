@@ -11,7 +11,7 @@ from utils.sensor_utils import *
 HOST = sys.argv[1].split("=")[1]
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
-SAMPLE_RATE = 100
+SAMPLE_RATE = 1
 THRESH = 15
 
 ## Step 1: Make socket connection to server ## 
