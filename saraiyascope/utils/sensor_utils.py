@@ -31,7 +31,7 @@ def initialize_sensors():
 
 
 ## determines the state of the sensors
-def get_state(current, previous):
+def get_direction(current, previous):
     if current == previous:
         return 'stable'
     
