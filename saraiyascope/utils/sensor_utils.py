@@ -62,9 +62,6 @@ def get_sensor(prox_dict):
             return k
     return None        
 
-def get_sensor_lux(lux_dict):
-    pass
-
 
 def is_forward(current, previous):
     if (current == 'p7' and previous == 'p3') or (current == 'p3' and previous == 'p6') \
