@@ -1,6 +1,12 @@
 # saraiya-scope-v2
 
 # how to run 
+- Pull of 3 terminal windws
+- Window 1: Rapsberry pi 
+    - ```ssh saraiya-scope@raspberrypi``` 
+    - Enter password set by IT 
+- Window 2: 
+
 
 ### System requirements
 - Iot device (raspberry pi) must be connected to the same Wifi network as the displaying laptop. 
