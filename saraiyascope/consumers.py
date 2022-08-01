@@ -1,7 +1,8 @@
 import json
 import time
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
-STATE = "C:/Users/admin/projects/saraiya-scope-v2/saraiyascope/state" # path on baltic mill
+STATE = "/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/" # path on baltic mill
+# STATE = "C:/Users/admin/projects/saraiya-scope-v2/saraiyascope/state" # path on baltic mill
 
 # museum consumer for django channel
 class MuseumConsumer(WebsocketConsumer):
