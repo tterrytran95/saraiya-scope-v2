@@ -24,7 +24,7 @@ class MuseumConsumer(WebsocketConsumer):
         while True:
             with open(STATE, 'r') as file:
                 file.seek(0)
-                if len(file.readline.split(",")) < 2:
+                if len(file.readline().split(",")) < 2:
                     continue
                 else:
                     img=file.readline().split(",")[1]
