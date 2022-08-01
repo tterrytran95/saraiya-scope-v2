@@ -24,10 +24,11 @@ class MuseumConsumer(WebsocketConsumer):
         while True:
             with open(STATE, 'r') as file:
                 file.seek(0)
-                if len(file.readline().split(",")) < 2:
+                line = file.readline().split(",")
+                if len(line) < 2:
                     continue
                 else:
-                    img=file.readline().split(",")[1]
+                    img=line[1]
                 res = self.send(json.dumps({'img':prefix+img}))
                 print(img)
                     
