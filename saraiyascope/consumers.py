@@ -21,14 +21,13 @@ class MuseumConsumer(WebsocketConsumer):
         #     time.sleep(.10)
             
         # await self.close()
-        
         while True:
             with open(STATE, 'r') as file:
                 file.seek(0)
                 img=file.readline().split(",")[1]
                 res = self.send(json.dumps({'img':prefix+img}))
                 print(img)
-    
+                    
     def receive(self):
         pass
 

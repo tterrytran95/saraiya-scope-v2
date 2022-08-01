@@ -42,7 +42,9 @@ def threaded_client(connection):
             num_lines = len(contents.split("\n"))
             file.seek(0)
             if num_lines >= 10:
-                file.truncate(0)
+                file.seek(1) # delete everything except 1 line so it doesn't crash
+                file.truncate()
+                file.seek(0)
                 file.write(raw_data+"\n")
             else:
                 file.write(raw_data+"\n"+contents)
