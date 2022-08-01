@@ -9,6 +9,7 @@ from utils.sensor_utils import *
 
 
 HOST = sys.argv[1].split("=")[1]
+INT_TIME = sys.argv[3].split("=")[1]
 PORT = 1234
 TOTAL_FRAMES = 3080 # temp for now
 SAMPLE_RATE = 1
@@ -25,7 +26,7 @@ except socket.error as e:
 Response = ClientSocket.recv(1024)
 
 ## Step 2: Initialize sensors ## 
-prox7, prox0, prox3, prox4 = initialize_sensors()
+prox7, prox0, prox3, prox4 = initialize_sensors(INT_TIME)
 
 ## Step 3: Start sensors ## 
 current = 'prox1'

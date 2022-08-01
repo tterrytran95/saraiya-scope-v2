@@ -6,10 +6,10 @@ import board
 import sys
 
 THRESH = 15
-INT_TIME = sys.argv[1].split("=")[1]
+# INT_TIME = sys.argv[1].split("=")[1]
 
 # utils for sensor
-def initialize_sensors():
+def initialize_sensors(INT_TIME):
     # Create I2C bus as normal
     i2c = board.I2C()
 
