@@ -3,6 +3,7 @@ import qwiic_proximity
 import adafruit_tca9548a
 import adafruit_vcnl4040
 import board
+import sys
 
 THRESH = 15
 INT_TIME = sys.argv[1].split("=")[1]
