@@ -45,31 +45,20 @@ while True:
         'p3' : prox3.proximity,
         'p4' : prox4.proximity,
     }
-    prox_interrupt_dict = {
-        'p7' : prox7.proximity_high_interrupt,
-        'p0' : prox0.proximity_high_interrupt,
-        'p3' : prox3.proximity_high_interrupt,
-        'p4' : prox4.proximity_high_interrupt,
-    }
+    
     print('######')
     print(prox_dict)
-    print(prox_interrupt_dict)
-    # current = get_trending_state(prox_dict)
+
+
     if get_sensor(prox_dict) is not None:
         current = get_sensor(prox_dict)
-        # print("sensor triggered: ", current)
+
         
     direction = get_direction(current, previous)
-    # print(direction)
-    # state_count_dict = update_trend(state_count_dict, new_state)
 
     if current_sample % SAMPLE_RATE == 0:
-    # if current != previous:
-        # direction = get_trending_state(state_count_dict)
+    
         direction = get_direction(current, previous)
-        # print("direction sent to server: ", direction)
-        # print(state_count_dict)
-        # state_count_dict = {} # reset this
         
         if direction == 'forward': 
             img_count = (img_count + 1) % TOTAL_FRAMES
@@ -91,6 +80,5 @@ while True:
 
     current_sample += 1
     time.sleep(.15)
-
 
 ClientSocket.close()

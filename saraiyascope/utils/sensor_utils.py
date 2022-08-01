@@ -45,14 +45,12 @@ def initialize_sensors():
     prox0.light_interrupt=1
     prox3.light_interrupt=1
     prox4.light_interrupt=1
-    
-    
+        
     prox7.light_integration_time=prox7.ALS_640MS
     prox0.light_integration_time=prox0.ALS_640MS
     prox3.light_integration_time=prox3.ALS_640MS
-    prox4.light_integration_time=prox4.ALS_640MS
-    
-    
+    prox4.light_integration_time=prox4.ALS_640MS 
+
     return prox7, prox0, prox3, prox4
 
 
@@ -87,10 +85,6 @@ def get_direction(current, previous):
     if is_forward(current, previous): return 'forward'
     elif is_backward(current, previous): return 'backward'
     else: return 'stable'
-    
-    
-    
-    
     
 def get_trending_state(count_dict):
     max_value = -1

@@ -1,6 +1,7 @@
 import json
 import time
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
+STATE = "C:/Users/admin/projects/saraiya-scope-v2/saraiyascope/state" # path on baltic mill
 
 # museum consumer for django channel
 class MuseumConsumer(WebsocketConsumer):
@@ -21,7 +22,7 @@ class MuseumConsumer(WebsocketConsumer):
         # await self.close()
         
         while True:
-            with open('/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/state', 'r') as file:
+            with open(STATE, 'r') as file:
                 file.seek(0)
                 img=file.readline().split(",")[1]
                 res = self.send(json.dumps({'img':prefix+img}))
