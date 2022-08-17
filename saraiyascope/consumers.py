@@ -34,13 +34,8 @@ class MuseumConsumer(WebsocketConsumer):
                     if len(line_contents) < 2:
                         continue
                     else:
-                    # img=line.split(",")[1]
                         img = line_contents[1]
                         res = self.send(json.dumps({'img':prefix+img}))
-                # print(line)
-                # if len(line) < 1:
-                #     continue
-                # else:
                 print(img)
                     
     def receive(self):
