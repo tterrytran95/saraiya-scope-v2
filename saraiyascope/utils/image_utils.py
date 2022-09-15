@@ -4,12 +4,14 @@ import requests, os, cv2, time
 
 URL = 'http://127.0.0.1:8000/post_cur_image'
 # FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/scope/saraiyascope/frames/'
-FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/frames/'
+# FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/frames/'
+FRAME_DIR = os.getcwd().replace('/utils', '') + '/frames/'
 # FRAME_DIR = "C:/Users/admin/projects/saraiya-scope-v2/saraiyascope/frames" # path on baltic mill
 FRAMES = os.listdir(FRAME_DIR)
 FRAME_RATE = 10
-VIDEO_PATH = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
+# VIDEO_PATH = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
 # VIDEO_PATH = 'C:/Users//admin/projects/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4' # path on baltic mill
+VIDEO_PATH = os.getcwd().replace('/utils', '') + '/samples/mochu_ks.mp4'
 
 """
     * film is 9mins 6 seconds @ 60 fps 
@@ -26,7 +28,7 @@ def get_frames_from_mov(path):
     while success:
         success, image = vidObj.read() # vidObj object calls read # function extract frames
         if count % FRAME_RATE == 0 and success: # saves the frames with frame-count
-            out = cv2.imwrite(FRAME_DIR + '\\frame%d.jpg' % count, image)
+            out = cv2.imwrite(FRAME_DIR + 'frame%d.jpg' % count, image)
             outframes.append("frame%d.jpg" % count) # just save the name of the image 
             print('saved', "frame %d" % count)
         count += 1
@@ -50,8 +52,8 @@ def upload_images(frames):
         
 def main():
     print('processing frames...')
-    # frames = get_frames_from_mov(VIDEO_PATH)
-    # print('%d frames extracted', len(frames))
+    frames = get_frames_from_mov(VIDEO_PATH)
+    print('%d frames extracted', len(frames))
     # print('uploading images...')
     print(len(FRAMES))
     upload_images(FRAMES)

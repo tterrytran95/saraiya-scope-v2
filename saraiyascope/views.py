@@ -1,6 +1,6 @@
 # views responsible for receiving requests and return responses (htnl, redirect to another page, or error)
 from django.http import HttpResponse
-from .models import GeeksModel, Museum, CurrentFrame
+from .models import Museum, CurrentFrame
 from django.shortcuts import render, redirect
 from .forms import MuseumForm, CurrentFrameForm
 from django.views.decorators.csrf import csrf_exempt # make the upload easier

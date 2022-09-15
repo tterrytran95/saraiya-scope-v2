@@ -10,7 +10,7 @@ urlpatterns=[
   path('route/MUSEUM/', MuseumConsumer.as_asgi()),
   path('admin/', admin.site.urls),
   path('museum_image', views.museum_image_get_view, name = 'museum_image'),
-  path('post_cur_image', views.post_cur_image, name = 'post_cur_image'),
+  path('post_cur_image', views.post_cur_image, name = 'post_cur_image'), 
   
   path('success', views.success, name = 'success'),
   path('error', views.error, name = 'error'),
