@@ -4,7 +4,7 @@ import requests, os, cv2, time
 
 URL = 'http://127.0.0.1:8000/post_cur_image'
 FRAME_DIR = os.getcwd().replace('/utils', '') + '/frames/'
-FRAMES = os.listdir(FRAME_DIR)
+# FRAMES = os.listdir(FRAME_DIR)
 FRAME_RATE = 10
 VIDEO_PATH = os.getcwd().replace('/utils', '') + '/samples/mochu_ks.mp4'
 
@@ -47,10 +47,11 @@ def upload_images(frames):
         
 def main():
     print('processing frames...')
-    frames = get_frames_from_mov(VIDEO_PATH)
-    print('%d frames extracted', len(frames))
+    # frames = get_frames_from_mov(VIDEO_PATH)
+    print('%d frames extracted' % len(frames))
     print('uploading images...')
-    print(len(FRAMES))
-    upload_images(FRAMES)
+    frames = os.listdir(FRAME_DIR)
+    print(len(frames))
+    upload_images(frames)
     
 main()

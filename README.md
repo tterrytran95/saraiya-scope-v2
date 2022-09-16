@@ -15,7 +15,7 @@
         - Assuming the user has a github account already, please fork off the original repo
         - No sharing of public key required 
 
-## How to install 
+## How to install on displaying computer 
 1. ```git clone git@github.com:tterrytran95/saraiya-scope-v2.git``` 
     - Or this will be your own forked repository
 2. ```pip3 install -U Django requests opencv-python channels```
@@ -45,6 +45,7 @@
     - ```ssh saraiya-scope@raspberrypi``` 
         - Enter password set by IT 
     - ```cd saraiya-scope-v2/saraiyascope```
+    - ```git pull``` 
     - ```python3 sensor.py HOSTNAME=192.168.1.26 INT_TIME=3.5```
         - ```HOSTNAME``` is the listening IP address of the laptop. 
         - Options for ```INT_TIME``` are as follows: 2.5, 3.0, 3.5, 4.0, 8.0
