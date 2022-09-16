@@ -1,6 +1,7 @@
 # saraiya-scope-v2
 
 ## System prerequisites
+- Linux OS distribution
 - Iot device (raspberry pi) must be connected to the same Wifi network as the displaying laptop (used interchangeably as the frontend/backend server). 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on the front/backend server 
 - [python3 version 3.9.6](https://www.python.org/downloads/) on the front/backend server
