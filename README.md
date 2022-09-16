@@ -1,12 +1,9 @@
 # saraiya-scope-v2
 
-## System requirements
-- Iot device (raspberry pi) must be connected to the same Wifi network as the displaying laptop. 
-
-## How to install 
-Please have these ready before starting the software installation process:
-- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [python3 version 3.9.6](https://www.python.org/downloads/)
+## System prerequisites
+- Iot device (raspberry pi) must be connected to the same Wifi network as the displaying laptop (used interchangeably as the frontend/backend server). 
+- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on the front/backend server 
+- [python3 version 3.9.6](https://www.python.org/downloads/) on the front/backend server
 - Someway to clone the repository
     - Option 1: Provide an ssh-key to tterrytran95@gmail.com 
         - ssh public key id of host machine 
@@ -17,17 +14,27 @@ Please have these ready before starting the software installation process:
         - Assuming the user has a github account already, please fork off the original repo
         - No sharing of public key required 
 
-1. ```git clone git@github.com:tterrytran95/saraiya-scope-v2.git```
+## How to install 
+1. ```git clone git@github.com:tterrytran95/saraiya-scope-v2.git``` 
+    - Or this will be your own forked repository
+
 2. ```pip3 install requests opencv-python```
+
 3. ```cd saraiya-scope-v2/saraiyascope && mkdir samples && mkdir frames && touch state```
+
 4. Drop video file titled mochu_ks.mp4 into the saraiyascope saraiya-scope-v2/saraiyascope/samples directory
+
 5. ```cd utils```
+
 6. ```python3 image_utils.py```
     - This will create the frames and upload them to the django server 
     - It will take a minute
+
 7. ```cd ../```
     - Go back into the directory saraiyascope 
+
 8. ```python3 manage.py makemigrations```
+
 9. ```python3 manage.py migrate```
     - This is the last step. Within steps 6-9, we are basically splitting the images and putting them on the local database to be consumed by the frontend server. 
 
