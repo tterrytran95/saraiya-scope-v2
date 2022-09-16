@@ -25,10 +25,12 @@
 6. ```python3 image_utils.py```
     - This will create the frames and upload them to the django server 
     - It will take a minute
-7. ```cd ../```
-    - Go back into the directory saraiyascope 
-8. ```python3 manage.py makemigrations```
-9. ```python3 manage.py migrate```
+7. ```cd ../../```
+    - Go back into the directory saraiya-scope-v2
+8. Open up another command line terminal and run ```python3 manage.py runserver```
+    - Leave this alone now and return back to the other terminal to run steps 9-10
+9. ```python3 manage.py makemigrations```
+10. ```python3 manage.py migrate```
     - This is the last step. Within steps 6-9, we are basically splitting the images and putting them on the django database to be consumed by the frontend server. 
     - Steps 8-9 syncs the data on the local machine with the django server 
 
