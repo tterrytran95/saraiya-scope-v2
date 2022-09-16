@@ -48,7 +48,7 @@ def upload_images(frames):
 def main():
     print('processing frames...')
     # frames = get_frames_from_mov(VIDEO_PATH)
-    print('%d frames extracted' % len(frames))
+    # print('%d frames extracted' % len(frames))
     print('uploading images...')
     FRAMES = os.listdir(FRAME_DIR)
     print(len(FRAMES))
