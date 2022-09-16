@@ -3,14 +3,9 @@ import requests, os, cv2, time
 # import cv2
 
 URL = 'http://127.0.0.1:8000/post_cur_image'
-# FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/scope/saraiyascope/frames/'
-# FRAME_DIR = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/frames/'
 FRAME_DIR = os.getcwd().replace('/utils', '') + '/frames/'
-# FRAME_DIR = "C:/Users/admin/projects/saraiya-scope-v2/saraiyascope/frames" # path on baltic mill
 FRAMES = os.listdir(FRAME_DIR)
 FRAME_RATE = 10
-# VIDEO_PATH = '/Users/tuethutran/saraiya-scope-venv/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4'
-# VIDEO_PATH = 'C:/Users//admin/projects/saraiya-scope-v2/saraiyascope/samples/mochu_ks.mp4' # path on baltic mill
 VIDEO_PATH = os.getcwd().replace('/utils', '') + '/samples/mochu_ks.mp4'
 
 """

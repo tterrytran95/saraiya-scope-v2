@@ -21,12 +21,6 @@ def initialize_sensors(INT_TIME):
     prox3 = adafruit_vcnl4040.VCNL4040(tca[3])
     prox4 = adafruit_vcnl4040.VCNL4040(tca[4])
     
-    # prox settings
-    # prox7.proximity_high_threshold=15
-    # prox0.proximity_high_threshold=15
-    # prox3.proximity_high_threshold=15
-    # prox4.proximity_high_threshold=15
-    
     if INT_TIME == '2.5':
         prox7.proximity_integration_time=prox7.PS_2_5T
         prox0.proximity_integration_time=prox0.PS_2_5T
@@ -52,27 +46,6 @@ def initialize_sensors(INT_TIME):
         prox0.proximity_integration_time=prox0.PS_8T
         prox3.proximity_integration_time=prox3.PS_8T
         prox4.proximity_integration_time=prox4.PS_8T
-        
-    # prox7.proximity_interrupt=prox7.PS_INT_CLOSE
-    # prox0.proximity_interrupt=prox0.PS_INT_CLOSE
-    # prox3.proximity_interrupt=prox3.PS_INT_CLOSE
-    # prox4.proximity_interrupt=prox4.PS_INT_CLOSE
-    
-    # light settings
-    # prox7.light_low_threshold=1
-    # prox0.light_low_threshold=1
-    # prox3.light_low_threshold=1
-    # prox4.light_low_threshold=1
-    
-    # prox7.light_interrupt=1
-    # prox0.light_interrupt=1
-    # prox3.light_interrupt=1
-    # prox4.light_interrupt=1
-        
-    # prox7.light_integration_time=prox7.ALS_640MS
-    # prox0.light_integration_time=prox0.ALS_640MS
-    # prox3.light_integration_time=prox3.ALS_640MS
-    # prox4.light_integration_time=prox4.ALS_640MS 
 
     return prox7, prox0, prox3, prox4
 
@@ -96,15 +69,6 @@ def is_backward(current, previous):
 
 ## determines the state of the sensors
 def get_direction(current, previous):
-    # if current == previous:
-    #     return 'stable'
-    
-    # if current > previous:
-    #     return 'forward'
-    
-    # if current < previous:
-    #     return 'backward'
-    
     if is_forward(current, previous): return 'forward'
     elif is_backward(current, previous): return 'backward'
     else: return 'stable'
