@@ -18,7 +18,7 @@
 ## How to install 
 1. ```git clone git@github.com:tterrytran95/saraiya-scope-v2.git``` 
     - Or this will be your own forked repository
-2. ```pip3 install Django requests opencv-python```
+2. ```pip3 install -U Django requests opencv-python channels```
 3. ```cd saraiya-scope-v2/saraiyascope && mkdir samples && mkdir frames && touch state```
 4. Drop video file titled ```mochu_ks.mp4``` into the directory ```saraiya-scope-v2/saraiyascope/samples```
 5. ```cd utils```
