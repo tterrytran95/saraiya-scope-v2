@@ -1,7 +1,8 @@
 import json
-import time
+import time, os
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 STATE = os.getcwd() + "/state" # path on baltic mill
+print(STATE)
 
 # museum consumer for django channel
 class MuseumConsumer(WebsocketConsumer):
@@ -13,7 +14,7 @@ class MuseumConsumer(WebsocketConsumer):
             with open(STATE, 'r') as file:
                 file.seek(0)
                 line = file.readline()
-                print('LINE', line)
+                # print('LINE', line)
                 
                 if line == "":
                     continue

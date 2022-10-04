@@ -18,21 +18,20 @@
 ## How to install on displaying computer 
 1. ```git clone git@github.com:tterrytran95/saraiya-scope-v2.git``` 
     - Or this will be your own forked repository
-2. ```pip3 install -U Django requests opencv-python channels```
-3. ```cd saraiya-scope-v2/saraiyascope && mkdir samples && mkdir frames && touch state```
-4. Drop video file titled ```mochu_ks.mp4``` into the directory ```saraiya-scope-v2/saraiyascope/samples```
-5. ```cd utils```
-6. ```python3 image_utils.py```
+2. ```pip3 install -U Django requests opencv-python channels Pillow```
+3. ```cd saraiya-scope-v2/ && touch state```
+4. Open up another command line terminal and run ```python3 manage.py runserver```
+    - Leave this alone and return back to the other terminal to run steps 5-6
+    - Should be in the ```saraiya-scope-v2``` directory where ```manage.py``` lives
+5. ```python3 manage.py makemigrations```
+6. ```python3 manage.py migrate```
+7. ```cd saraiyascope && mkdir samples && mkdir frames```
+8. Drop video file titled ```mochu_ks.mp4``` into the directory ```saraiya-scope-v2/saraiyascope/samples```
+9. ```cd utils```
+10. ```python3 image_utils.py```
     - This will create the frames and upload them to the django server 
     - It will take a minute
-7. ```cd ../../```
-    - Go back into the directory saraiya-scope-v2
-8. Open up another command line terminal and run ```python3 manage.py runserver```
-    - Leave this alone now and return back to the other terminal to run steps 9-10
-9. ```python3 manage.py makemigrations```
-10. ```python3 manage.py migrate```
-    - This is the last step. Within steps 6-9, we are basically splitting the images and putting them on the django database to be consumed by the frontend server. 
-    - Steps 8-9 syncs the data on the local machine with the django server 
+Done! 
 
 ## How to run 
 1. Open 3 command line windows 
