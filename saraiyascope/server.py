@@ -36,7 +36,7 @@ def threaded_client(connection):
         raw_data = data.decode('utf-8')
         print('received: ', raw_data)
         
-        with open('state', 'r+') as file:
+        with open('../state', 'r+') as file:
             contents = file.read()
             num_lines = len(contents.split("\n"))
             file.seek(0)

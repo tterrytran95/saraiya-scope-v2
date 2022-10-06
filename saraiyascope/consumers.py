@@ -25,7 +25,7 @@ class MuseumConsumer(WebsocketConsumer):
                     else:
                         img = line_contents[1]
                         res = self.send(json.dumps({'img':prefix+img}))
-                print(img)
+                # print(img)
                     
     def receive(self):
         pass
