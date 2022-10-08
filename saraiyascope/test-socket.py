@@ -13,21 +13,16 @@ except socket.error as e:
 Response = ClientSocket.recv(1024)
 
 ### Step 2: Send a response going forward & backward
-flag = True 
-while flag:
-    for i in range(100):    
-        Input = 'forward' + ',' + 'frame'+str(i*10)+'.jpg'
-        ClientSocket.send(str.encode(Input))
-        Response = ClientSocket.recv(1024)
-        time.sleep(.5)
+for i in range(100):    
+    Input = 'forward' + ',' + 'frame'+str(i*10)+'.jpg'
+    ClientSocket.send(str.encode(Input))
+    Response = ClientSocket.recv(1024)
+    time.sleep(.5)     
 
-    for i in range(100, -1, 1):    
-        Input = 'backward' + ',' + 'frame'+str(i*10)+'.jpg'
-        ClientSocket.send(str.encode(Input))
-        Response = ClientSocket.recv(1024)
-        time.sleep(.5)
-        
-    flag = False     
-    
+for i in range(10, -1, 1):    
+    Input = 'backward' + ',' + 'frame'+str(i*10)+'.jpg'
+    ClientSocket.send(str.encode(Input))
+    Response = ClientSocket.recv(1024)
+    time.sleep(.5)
 ### Step 3: Close the connection
 ClientSocket.close()
