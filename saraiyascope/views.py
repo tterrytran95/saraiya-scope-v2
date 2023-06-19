@@ -34,6 +34,10 @@ def post_cur_image(request):
     else:
         form = CurrentFrameForm()
     return render(request, 'museum_upload.html', {'form' : form})
+
+def hello(request):
+    if request.method == 'GET':
+        return render(request, 'hello.html')
         
 # DEPRECATED
         

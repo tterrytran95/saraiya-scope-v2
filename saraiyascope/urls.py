@@ -11,6 +11,7 @@ urlpatterns=[
   path('admin/', admin.site.urls),
   path('museum_image', views.museum_image_get_view, name = 'museum_image'),
   path('post_cur_image', views.post_cur_image, name = 'post_cur_image'), 
+  path('hello', views.hello, name = 'hello'),
   
   path('success', views.success, name = 'success'),
   path('error', views.error, name = 'error'),

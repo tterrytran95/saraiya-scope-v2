@@ -5,3 +5,6 @@ samples/
 db.sqlite3
 state
 docker-compose.debug.yml
+notes
+saraiyascope/migrations/__pycache__/*
+scope/__pycache__/*

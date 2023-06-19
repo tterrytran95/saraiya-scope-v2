@@ -16,15 +16,24 @@ MAX_LINES = 10
 
 ServerSocket = socket.socket()
 host = '127.0.0.1'
-port = 1234
+port = 1234 # uses this port to talk to raspberry pi # expose this port 
 ThreadCount = 0
 try:
     ServerSocket.bind(('', port))
 except socket.error as e:
     print(str(e))
 
-print('Waitiing for a Connection..')
+print('Waiting for a Connection..')
 ServerSocket.listen(5)
+
+print ('Initializing state file...')
+
+state_path = os.getcwd() + "/state" # assuming that you call from saraiya-scope-v2 root directory
+if os.path.exists(state_path) == False:
+    print('Creating state file at...', state_path)
+    f = open(state_path, "w+")
+else:
+    print('Using existing state file at...', state_path)
 
 # handles the connection from the raspberry pi
 def threaded_client(connection):
@@ -36,7 +45,7 @@ def threaded_client(connection):
         raw_data = data.decode('utf-8')
         print('received: ', raw_data)
         
-        with open('../state', 'r+') as file:
+        with open(state_path, 'w+') as file:
             contents = file.read()
             num_lines = len(contents.split("\n"))
             file.seek(0)
