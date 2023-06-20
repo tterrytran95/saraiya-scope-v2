@@ -42,6 +42,7 @@ Done!
 3. Window 2: Backend server 
     - ```cd saraiya-scope-v2/saraiyascope```
     - ```python3 server.py```
+    - ```python3 saraiyascope/test-socket.py HOST=127.0.0.1``` for test environments
 4. Window 3: Rapsberry pi 
     - ```ssh saraiya-scope@raspberrypi``` 
         - Enter password set by IT 
