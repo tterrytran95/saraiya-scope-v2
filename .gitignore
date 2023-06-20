@@ -1,6 +1,6 @@
-frames/
+*frames/
 media/
-samples/
+*samples/
 *./__pycache__/.*
 db.sqlite3
 state

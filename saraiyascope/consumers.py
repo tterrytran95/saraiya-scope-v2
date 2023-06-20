@@ -9,7 +9,7 @@ print(STATE)
 class MuseumConsumer(WebsocketConsumer):
     def connect(self):
         self.accept()
-        prefix="http://127.0.0.1:8000/media/images/" # talk with the front end # hit the end media/images/ end point to display 
+        prefix="http://127.0.0.0:8000/media/images/" # talk with the front end # hit the end media/images/ end point to display 
         
         while True:
             try:
