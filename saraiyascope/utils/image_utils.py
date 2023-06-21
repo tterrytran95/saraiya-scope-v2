@@ -43,7 +43,7 @@ def upload_images(frames):
         # path = FRAME_DIR+"/"+img_name+'.jpg'
         path = FRAME_DIR + "/" + f
         files = {'img': open(path, 'rb')}
-        data = {'img_name': img_name}
+        data = {'img_name': img_name+'.jpg'}
         response = requests.post(URL, data = data, files=files)
         # print(response)
         

@@ -34,7 +34,7 @@
 						}
 					</script> -->
 					<script>
-						let socket = new WebSocket('ws://127.0.0.0:8000/route/MUSEUM/');
+						let socket = new WebSocket('ws://127.0.0.1:8000/route/MUSEUM/');
 						console.log(socket)
 						socket.addEventListener('message', function (event) {
 							let data = JSON.parse(event.data);
