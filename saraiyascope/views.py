@@ -10,7 +10,8 @@ def museum_image_get_view(request):
     if request.method == 'GET':
         # print('request: ', request.META)
         img_name = request.META['QUERY_STRING'].split("=")[1]
-        img_filter = CurrentFrame.objects.filter(img_name=img_name.split(".")[0]) # temp hardoding
+        print(img_name)
+        img_filter = CurrentFrame.objects.filter(img_name=img_name) # temp hardoding
         print(img_filter)
         return render(request, 'display_museum_images.html', {'img' : img_filter})
         

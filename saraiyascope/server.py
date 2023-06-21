@@ -43,7 +43,7 @@ def threaded_client(connection):
     while True:
         data = connection.recv(2048)
         raw_data = data.decode('utf-8')
-        print('received: ', raw_data)
+        print('connector received: ', raw_data)
         
         with open(state_path, 'w+') as file:
             contents = file.read()

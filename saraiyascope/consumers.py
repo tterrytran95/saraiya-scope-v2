@@ -10,7 +10,7 @@ print(STATE)
 class MuseumConsumer(WebsocketConsumer):
     def connect(self):
         self.accept()
-        prefix="http://127.0.0.1:8000/media/images/" # talk with the front end # hit the end media/images/ end point to display 
+        prefix="http://localhost:8000/media/images/" # talk with the front end # hit the end media/images/ end point to display 
         
         while True:
             try:
@@ -25,9 +25,12 @@ class MuseumConsumer(WebsocketConsumer):
                         if len(line_contents) < 2:
                             continue
                         else:
-                            img = line_contents[1]
-                            res = self.send(json.dumps({'img':prefix+img}))
-                    print(img)
+                            img = line_contents[1].strip()
+                            obj = json.dumps({'img':prefix+img})
+                            # print(obj)
+                            res = self.send(obj)
+                            # print("response to consumer: ", res)
+                    # print(img)
             except Exception as e:
                 print(e)
 

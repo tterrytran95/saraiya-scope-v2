@@ -38,10 +38,11 @@
 						console.log(socket)
 						socket.addEventListener('message', function (event) {
 							let data = JSON.parse(event.data);
+							// console.log("data:", data)
 							// console.log(document.querySelector('#frame_img').src)
 							// let cur_img = document.querySelector('#frame_img').src;
 							let next_img = data.img
-							console.log(next_img);
+							console.log("next_img:", next_img);
 							document.querySelector('#frame-img').src = next_img;
 						});
 						// socket.onmessage = function(event) {
@@ -54,7 +55,8 @@
 					<!-- <div id="frame-div" class="frame">
 					</div> -->
 					<span class="border border-dark">
-						<img id="frame-img" src="{{ 0.img.url }}" class="center" style="width: 100%; float: middle; margin-right: 10px;" />
+						<!-- <img id="frame-img" src="{{ 0.img.url }}" class="center" style="width: 100%; float: middle; margin-right: 10px;" /> -->
+						<img id="frame-img" src="frame0.jpg" class="center" style="width: 100%; float: middle; margin-right: 10px;" />
 					</span>
 
 
