@@ -1,12 +1,14 @@
-import requests, cv2, os, time
+import requests, cv2, os, time, sys
 # import os
 # import cv2
+
+VIDEO = sys.argv[1].split("=")[1] 
 
 URL = 'http://127.0.0.1:8889/post_cur_image'
 FRAME_RATE = 10
 # assume to run this from saraiya-scope-v2 dir
 FRAME_DIR = os.path.abspath('saraiyascope/frames/')
-VIDEO_PATH = os.path.abspath('saraiyascope/samples/film2.mp4')
+VIDEO_PATH = os.path.abspath('saraiyascope/samples/'+VIDEO)
 
 print('FRAME_DIR', FRAME_DIR)
 print('VIDEO_PATH', VIDEO_PATH)
