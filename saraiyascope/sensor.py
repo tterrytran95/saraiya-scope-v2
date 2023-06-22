@@ -17,6 +17,7 @@ except socket.error as e:
     print(str(e))
     exit(1)
 Response = ClientSocket.recv(1024)
+print("CONNECTED: {}".format(Response))
 
 ## Step 2: Initialize sensors ## 
 prox7, prox0, prox3, prox4 = initialize_sensors(INT_TIME)
@@ -79,3 +80,5 @@ while True:
     time.sleep(.15)
 
 ClientSocket.close()
+
+172.24.5.83
