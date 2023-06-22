@@ -80,5 +80,3 @@ while True:
     time.sleep(.15)
 
 ClientSocket.close()
-
-172.24.5.83
