@@ -12,12 +12,12 @@ THRESH = 15
 ClientSocket = socket.socket()
 print('Waiting for connection')
 try:
-    ClientSocket.connect((HOST, PORT))
+    print("Attempting to connect to {}:{}\n\t{}".format(host, port, ClientSocket.connect((HOST, PORT)))
 except socket.error as e:
     print(str(e))
     exit(1)
 Response = ClientSocket.recv(1024)
-print("CONNECTED: {}".format(Response))
+print("Server response: {}".format(Response))
 
 ## Step 2: Initialize sensors ## 
 prox7, prox0, prox3, prox4 = initialize_sensors(INT_TIME)
