@@ -4,7 +4,8 @@ from utils.sensor_utils import *
 HOST = sys.argv[1].split("=")[1]
 INT_TIME = sys.argv[2].split("=")[1]
 PORT = 1234
-TOTAL_FRAMES = 3080 # temp for now
+# TOTAL_FRAMES = 3080 # temp for now
+TOTAL_FRAMES = 100 # temp for now
 SAMPLE_RATE = 1
 THRESH = 15
 
