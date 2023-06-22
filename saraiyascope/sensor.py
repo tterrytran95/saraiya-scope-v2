@@ -12,7 +12,7 @@ THRESH = 15
 ClientSocket = socket.socket()
 print('Waiting for connection')
 try:
-    print("Attempting to connect to {}:{}".format(host, port))
+    print("Attempting to connect to {}:{}".format(HOST, PORT))
     print(ClientSocket.connect(HOST, PORT))
 except socket.error as e:
     print(str(e))
