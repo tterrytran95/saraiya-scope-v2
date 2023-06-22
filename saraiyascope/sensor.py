@@ -59,17 +59,20 @@ while True:
             Input = direction + ',' + 'frame'+str(img_count*10)+'.jpg'
             ClientSocket.send(str.encode(Input))
             Response = ClientSocket.recv(1024)
+            print("Forward response: {}".format(Response))
         elif direction == 'backward': 
             img_count = (img_count - 1) % TOTAL_FRAMES
             Input = direction + ',' + 'frame'+str(img_count*10)+'.jpg'
             ClientSocket.send(str.encode(Input))
             Response = ClientSocket.recv(1024)
+            print("Backward response: {}".format(Response))
         else:
             stable_count += 1
             if stable_count >= 50:
                 Input = direction + ',' + 'frame'+str(img_count*10)+'.jpg'
                 ClientSocket.send(str.encode(Input))
                 Response = ClientSocket.recv(1024)
+                print("Stable response: {}".format(Response))
                 stable_count = 0 # reset it
 
     current_sample += 1
