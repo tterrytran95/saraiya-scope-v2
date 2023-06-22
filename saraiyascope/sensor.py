@@ -11,14 +11,18 @@ THRESH = 15
 ## Step 1: Make socket connection to server ## 
 ClientSocket = socket.socket()
 print('Waiting for connection')
-try:
-    print("Attempting to connect to {}:{}".format(HOST, PORT))
-    print(ClientSocket.connect((HOST, PORT)))
-except socket.error as e:
-    print(str(e))
-    exit(1)
-Response = ClientSocket.recv(1024)
-print("Server response: {}".format(Response))
+CONNECTED = False
+while CONNECTED == False:
+    try:
+        print("Attempting to connect to {}:{}".format(HOST, PORT))
+        print(ClientSocket.connect((HOST, PORT)))
+        if ClientSocket.connect((HOST, PORT)) != None:
+            CONNECTED = True
+    except socket.error as e:
+        print(str(e))
+        exit(1)
+    Response = ClientSocket.recv(1024)
+    print("Server response: {}".format(Response))
 
 ## Step 2: Initialize sensors ## 
 prox7, prox0, prox3, prox4 = initialize_sensors(INT_TIME)
