@@ -1,13 +1,17 @@
 #!bin/bash
 
+# automate ssh into raspberry pi
+# https://medium.com/@eanunez85/automate-your-ssh-login-to-remote-servers-28dbdc0ed28f
+
 # check if anything is running on port 1234 and kill it
 kill $(lsof -t -i:1234)
 
 # run connector server
-echo starting connector... # runs on port 1234 to talk with rasperry pi
-python3 saraiyascope/server.py &
+echo starting connector...
+# silently run on the WSL VM host # port 1234 exposed 
+python3 saraiyascope/server.py -HOSTNAME=$(hostname -I) & 
 
 
 # run frontend server
 echo starting frontend...
-python3 manage.py runserver
+python3 manage.py runserver 
