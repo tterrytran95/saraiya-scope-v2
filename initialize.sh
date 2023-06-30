@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 # use port 8889 to upload images to frontend
 echo "starting front end..."
-python3 manage.py runserver 127.0.0.1:8889 > initialize.log &
+python3 manage.py runserver 127.0.0.1:8889 > logs/initialize.log &
 
 echo "making migrations..."
 python3 manage.py migrate

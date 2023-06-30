@@ -56,3 +56,15 @@ Done!
 5. Open up a webrowser on the laptop
     - Put this into the url: http://localhost:8000/museum_image?img=frame0.jpg
     - Refresh the page after starting both servers 
+
+### NEW SETUP
+
+### Initializations
+1. Get the code with the sample embedded into it 
+2. Set up the terminal environment (just use 2)
+3. Terminal 1 - cd saraiya
+    source initialize.sh
+
+
+source server.sh
+python3 saraiyascope/sensor.py HOST=10.0.0.16 INT_TIME=4.0

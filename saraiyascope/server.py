@@ -15,16 +15,16 @@ MAX_LINES = 10
 
 
 ServerSocket = socket.socket()
-host = '127.0.0.1'
+# HOST = '127.0.0.1'
 # host = '0.0.0.0' 
 # dynamically get hostname
-host = '172.24.5.83' # this is the VM ip address # figure out how this works and make it configurable 
+# HOST = '172.24.5.83' # this is the VM ip address # figure out how this works and make it configurable 
 HOST = sys.argv[1].split("=")[1]
-port = 1234 # uses this port to talk to raspberry pi # expose this port 
+PORT = 1234 # uses this port to talk to raspberry pi # expose this port 
 ThreadCount = 0
 try:
-    # ServerSocket.bind(('', port))
-    ServerSocket.bind((host, port)) 
+    # ServerSocket.bind(('', PORT))
+    ServerSocket.bind((HOST, PORT)) 
 except socket.error as e:
     print(str(e))
 
